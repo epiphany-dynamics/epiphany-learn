@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllModules } from "@/lib/content";
 import { getModuleColor } from "@/lib/module-colors";
-import { MODULE_ILLUSTRATIONS, HeroIllustration } from "@/components/ui/ModuleIllustrations";
+// Module cover images are now generated PNGs at /images/generated/module-{N}-cover.png
 
 const KAHOOT_SHAPES = ["▲", "◆", "●", "■", "★", "⬟"];
 const MODULE_EMOJIS = ["🧠", "💬", "🛠️", "🛡️", "🛒", "🚀"];
@@ -131,7 +131,7 @@ export default function ModulesPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {modules.map((mod, index) => {
             const color = getModuleColor(mod.id);
-            const Illustration = MODULE_ILLUSTRATIONS[index] ?? MODULE_ILLUSTRATIONS[0];
+            // Generated cover images at /images/generated/module-{N}-cover.png
             return (
               <Link
                 key={mod.id}

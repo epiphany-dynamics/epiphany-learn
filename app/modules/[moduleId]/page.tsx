@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllModules, getModule } from "@/lib/content";
 import { getModuleColor, getModuleColorVars } from "@/lib/module-colors";
-import { MODULE_ILLUSTRATIONS } from "@/components/ui/ModuleIllustrations";
+// Module cover images are now generated PNGs at /images/generated/module-{N}-cover.png
 
 const KAHOOT_SHAPES = ["▲", "◆", "●", "■", "★", "⬟"];
 const MODULE_EMOJIS = ["🧠", "💬", "🛠️", "🛡️", "🛒", "🚀"];
@@ -124,7 +124,7 @@ export default function ModulePage({ params }: Props) {
   const color = getModuleColor(params.moduleId);
   const colorVars = getModuleColorVars(params.moduleId);
   const moduleIndex = parseInt(params.moduleId.replace("module-", "")) - 1;
-  const Illustration = MODULE_ILLUSTRATIONS[moduleIndex] ?? MODULE_ILLUSTRATIONS[0];
+  // Generated cover images at /images/generated/module-{N}-cover.png
   const emoji = MODULE_EMOJIS[moduleIndex] ?? "📚";
   const lessonEmojis = LESSON_EMOJIS[params.moduleId] ?? ["📝", "📖", "🎯", "✅"];
   const learnings = MODULE_LEARNINGS[params.moduleId] ?? MODULE_LEARNINGS["module-1"];
