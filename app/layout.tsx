@@ -64,7 +64,7 @@ export default function RootLayout({
             <a
               href="https://epiphanydynamics.ai"
               className="transition-colors"
-              style={{ color: "var(--accent-blue)" }}
+              style={{ color: "#f0efeb" }}
               target="_blank"
               rel="noopener noreferrer"
             >
