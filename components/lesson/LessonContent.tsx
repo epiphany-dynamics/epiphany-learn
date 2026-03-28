@@ -8,9 +8,11 @@ import {
   setLastVisited,
   getProgress,
   awardBadge,
+  unlockReward,
   getCompletedLessonCount,
 } from "@/lib/progress";
 import { BADGES } from "@/lib/achievements";
+import { getRewardForModule } from "@/lib/rewards";
 import type { Lesson, ModuleMeta } from "@/lib/content";
 import { getModuleColor } from "@/lib/module-colors";
 import XPBurst from "@/components/gamification/XPBurst";
@@ -117,6 +119,11 @@ export default function LessonContent({
     });
 
     if (isLastLesson) {
+      // Unlock the cheat sheet reward for this module
+      const reward = getRewardForModule(moduleId);
+      if (reward) {
+        unlockReward(reward.id);
+      }
       setTimeout(() => setShowModuleComplete(true), 1800);
     }
   }

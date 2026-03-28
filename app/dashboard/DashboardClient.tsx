@@ -465,6 +465,33 @@ export default function DashboardClient({ modules }: Props) {
           )}
         </div>
 
+        {/* ============ REWARDS ============ */}
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <h3 className="text-xl font-display font-bold text-[var(--text-primary)]">Rewards</h3>
+            <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.1), transparent)" }} />
+          </div>
+          <Link
+            href="/rewards"
+            className="block rounded-2xl p-5 transition-all hover:scale-[1.01]"
+            style={{
+              background: "var(--bg-card)",
+              border: "1px solid rgba(0, 201, 183, 0.15)",
+            }}
+          >
+            <div className="flex items-center gap-4">
+              <span className="text-3xl">🎁</span>
+              <div className="flex-1">
+                <p className="font-display font-bold text-[var(--text-primary)]">Cheat Sheets & Certificate</p>
+                <p className="text-sm text-[var(--text-muted)]">
+                  Complete modules to unlock free downloadable cheat sheets. Finish all 7 for your AI Literate certificate.
+                </p>
+              </div>
+              <span className="text-[var(--text-faint)] text-xl">→</span>
+            </div>
+          </Link>
+        </div>
+
         {/* ============ ACCOUNT SYNC ============ */}
         <div>
           <div className="flex items-center gap-3 mb-4">

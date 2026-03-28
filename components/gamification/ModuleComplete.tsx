@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Badge } from "@/lib/achievements";
+import { getRewardForModule } from "@/lib/rewards";
 import Confetti from "./Confetti";
 
 interface Props {
@@ -23,6 +24,7 @@ interface Props {
 export default function ModuleComplete({
   visible,
   moduleTitle,
+  moduleId,
   xpEarned,
   totalXP,
   streak,
@@ -32,6 +34,8 @@ export default function ModuleComplete({
   nextModuleTitle,
   onDismiss,
 }: Props) {
+  const reward = getRewardForModule(moduleId);
+
   return (
     <AnimatePresence>
       {visible && (
@@ -137,11 +141,41 @@ export default function ModuleComplete({
                   </motion.div>
                 )}
 
+                {/* Reward unlocked */}
+                {reward && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.55, type: "spring", stiffness: 400, damping: 20 }}
+                    className="rounded-2xl p-4 mb-6"
+                    style={{ background: "rgba(0, 201, 183, 0.08)", border: "1px solid rgba(0, 201, 183, 0.2)" }}
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-2xl">{reward.icon}</span>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "#00C9B7" }}>
+                          🎁 Cheat Sheet Unlocked
+                        </p>
+                        <p className="font-bold font-display text-sm" style={{ color: "#F0EFEB" }}>{reward.title}</p>
+                      </div>
+                    </div>
+                    <p className="text-xs mb-3" style={{ color: "rgba(240, 239, 235, 0.5)" }}>{reward.description}</p>
+                    <Link
+                      href="/rewards"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+                      style={{ background: "rgba(0, 201, 183, 0.15)", color: "#00C9B7" }}
+                      onClick={onDismiss}
+                    >
+                      View My Rewards →
+                    </Link>
+                  </motion.div>
+                )}
+
                 {/* Total XP */}
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.55 }}
+                  transition={{ delay: 0.6 }}
                   className="text-center text-sm mb-5"
                   style={{ color: "rgba(240, 239, 235, 0.5)" }}
                 >

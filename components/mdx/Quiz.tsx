@@ -245,6 +245,7 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
   const [showEmojis, setShowEmojis] = useState(false);
   const [showParticles, setShowParticles] = useState(false);
   const startTimeRef = useRef(Date.now());
+  const feedbackRef = useRef<HTMLDivElement>(null);
 
   // ─── Intro countdown 3-2-1 ───
   useEffect(() => {
@@ -288,6 +289,11 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
 
     setAnswers((a) => [...a, { questionId: q.id, selectedId: optionId, correct, timeSpent, points }]);
     setPhase("feedback");
+
+    // Scroll feedback into view on mobile
+    setTimeout(() => {
+      feedbackRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 300);
 
     // Auto-advance
     setTimeout(() => {
@@ -513,7 +519,7 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
               {(() => {
                 const Illus = q.illustration ? ILLUSTRATIONS[q.illustration] : null;
                 return Illus ? (
-                  <div className="quiz-illustration-float w-full h-48 md:h-72 mb-4 rounded-xl overflow-hidden flex items-center justify-center" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div className="quiz-illustration-float w-full h-32 sm:h-48 md:h-72 mb-4 rounded-xl overflow-hidden flex items-center justify-center" style={{ background: "rgba(255,255,255,0.03)" }}>
                     <Illus className="w-full h-full" />
                   </div>
                 ) : q.image ? (
@@ -623,7 +629,7 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
 
             {/* ─── Feedback panel with illustrations ─── */}
             {phase === "feedback" && lastAnswer && (
-              <div className="mt-5 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+              <div ref={feedbackRef} className="mt-5 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "200ms" }}>
                 <div className={`p-4 rounded-2xl text-sm relative overflow-hidden ${
                   lastAnswer.correct
                     ? "quiz-feedback-correct"

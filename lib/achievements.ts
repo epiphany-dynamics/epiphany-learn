@@ -72,7 +72,7 @@ export const BADGES: Record<string, Badge> = {
   'full-stack': {
     id: 'full-stack',
     title: 'Full Stack',
-    description: 'Completed all 6 modules',
+    description: 'Completed all 7 modules',
     icon: '🎓',
     svgPath: '/badges/badge-full-stack.svg',
     xpReward: 150,

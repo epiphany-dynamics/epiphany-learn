@@ -146,8 +146,8 @@ export default function SlideRenderer({ children, color, glow }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, [goNext, goPrev]);
 
-  // Touch swipe
-  const touchX = useRef(0);
+  // Touch swipe — require horizontal to exceed vertical to avoid hijacking scroll
+  const touchStart = useRef({ x: 0, y: 0 });
 
   // ─── Compute transition CSS class ───
   let transitionClass = "slide-transition-visible";
@@ -161,11 +161,18 @@ export default function SlideRenderer({ children, color, glow }: Props) {
     <div
       className="slide-renderer flex flex-col"
       style={{ height: "calc(100vh - 64px)", minHeight: "500px" }}
-      onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
+      onTouchStart={(e) => {
+        touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }}
       onTouchEnd={(e) => {
-        const dx = e.changedTouches[0].clientX - touchX.current;
-        if (dx < -60) goNext();
-        else if (dx > 60) goPrev();
+        const dx = e.changedTouches[0].clientX - touchStart.current.x;
+        const dy = e.changedTouches[0].clientY - touchStart.current.y;
+        // Only trigger swipe if horizontal movement is dominant (>2x vertical)
+        // and exceeds minimum threshold of 80px
+        if (Math.abs(dx) > Math.abs(dy) * 2 && Math.abs(dx) > 80) {
+          if (dx < 0) goNext();
+          else goPrev();
+        }
       }}
     >
       {/* ═══ Slide Content ═══ */}

@@ -1503,6 +1503,46 @@ body {
    REDUCED MOTION
    ============================================================ */
 
+/* ── Mobile Optimizations ────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  /* Quiz: reduce padding, make scrollable */
+  .quiz-container {
+    border-radius: 1rem;
+  }
+
+  .quiz-question-card {
+    padding: 0.75rem;
+  }
+
+  .quiz-question-bar {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  /* Quiz answers: tighter on mobile */
+  .quiz-container button {
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Generated images: slightly less margin on mobile */
+  .prose-lesson img[src*="/images/generated/"] {
+    margin: 1rem auto;
+    border-radius: 0.5rem;
+  }
+
+  /* Slide counter: smaller */
+  .slide-renderer .text-sm.font-display {
+    font-size: 0.75rem;
+  }
+
+  /* Navigation buttons: full width, larger tap target */
+  .slide-renderer button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

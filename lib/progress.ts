@@ -26,6 +26,7 @@ export interface LastVisited {
 export interface ProgressState {
   modules: Record<string, ModuleProgress>
   badges: string[]
+  unlockedRewards: string[]  // reward IDs unlocked via module completion
   xp: number
   streak: number
   streakLastDate: string | null  // YYYY-MM-DD of last lesson completion
@@ -49,6 +50,7 @@ function getDefaultState(): ProgressState {
   return {
     modules: {},
     badges: [],
+    unlockedRewards: [],
     xp: 0,
     streak: 0,
     streakLastDate: null,
@@ -67,6 +69,7 @@ export function getProgress(): ProgressState {
     if (parsed.streak === undefined) parsed.streak = 0
     if (parsed.streakLastDate === undefined) parsed.streakLastDate = null
     if (parsed.lastVisited === undefined) parsed.lastVisited = null
+    if (parsed.unlockedRewards === undefined) parsed.unlockedRewards = []
     return parsed
   } catch {
     return getDefaultState()
@@ -171,6 +174,20 @@ export function awardBadge(badgeId: string): ProgressState {
     saveProgress(state)
   }
   return state
+}
+
+export function unlockReward(rewardId: string): ProgressState {
+  const state = getProgress()
+  if (!state.unlockedRewards.includes(rewardId)) {
+    state.unlockedRewards.push(rewardId)
+    saveProgress(state)
+  }
+  return state
+}
+
+export function isRewardUnlocked(rewardId: string): boolean {
+  const state = getProgress()
+  return state.unlockedRewards.includes(rewardId)
 }
 
 export function isLessonCompleted(moduleId: string, lessonId: string): boolean {

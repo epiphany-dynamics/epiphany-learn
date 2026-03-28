@@ -49,6 +49,30 @@ export default function RootLayout({
         className={`${montserrat.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <footer
+          className="w-full py-4 text-center border-t"
+          style={{
+            background: "var(--bg-card)",
+            borderColor: "rgba(255,255,255,0.06)",
+          }}
+        >
+          <p
+            className="text-sm font-medium"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Brought to you by{" "}
+            <a
+              href="https://epiphanydynamics.ai"
+              className="transition-colors"
+              style={{ color: "var(--accent-blue)" }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Epiphany Dynamics
+            </a>
+            {" "}— Work, Reimagined.
+          </p>
+        </footer>
       </body>
     </html>
   );
