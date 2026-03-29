@@ -628,6 +628,53 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ============ REWARDS SECTION ============ */}
+      <section className="max-w-5xl mx-auto px-6 py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-[var(--text-primary)] mb-3">
+            Learn more, earn more <span className="inline-block">🎁</span>
+          </h2>
+          <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
+            Every module you complete unlocks a free downloadable cheat sheet. Finish all 7 and earn your AI Literate certificate.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          {/* Cheat Sheets */}
+          <div className="rounded-2xl p-6 text-center" style={{ background: "rgba(0,201,183,0.08)", border: "1px solid rgba(0,201,183,0.2)" }}>
+            <div className="text-4xl mb-3">📖</div>
+            <h3 className="font-display font-bold text-[var(--text-primary)] mb-2">7 Cheat Sheets</h3>
+            <p className="text-sm text-[var(--text-muted)]">
+              Jargon decoders, prompt libraries, safety checklists, and more — each one designed to actually be useful.
+            </p>
+          </div>
+
+          {/* XP & Badges */}
+          <div className="rounded-2xl p-6 text-center" style={{ background: "rgba(255,166,2,0.08)", border: "1px solid rgba(255,166,2,0.2)" }}>
+            <div className="text-4xl mb-3">⚡</div>
+            <h3 className="font-display font-bold text-[var(--text-primary)] mb-2">XP & Badges</h3>
+            <p className="text-sm text-[var(--text-muted)]">
+              Earn points for every lesson, unlock badges for milestones, and track your streak on your personal dashboard.
+            </p>
+          </div>
+
+          {/* Certificate */}
+          <div className="rounded-2xl p-6 text-center" style={{ background: "rgba(226,27,60,0.08)", border: "1px solid rgba(226,27,60,0.2)" }}>
+            <div className="text-4xl mb-3">🎓</div>
+            <h3 className="font-display font-bold text-[var(--text-primary)] mb-2">AI Literate Certificate</h3>
+            <p className="text-sm text-[var(--text-muted)]">
+              Complete all 7 modules and download a shareable certificate with your name on it. Post it, print it, prove it.
+            </p>
+          </div>
+        </div>
+
+        <div className="text-center mt-8">
+          <p className="text-[var(--text-faint)] text-sm">
+            Everything is free. No signup required. No catch.
+          </p>
+        </div>
+      </section>
+
       {/* ============ CTA FOOTER ============ */}
       <section
         className="relative overflow-hidden"
