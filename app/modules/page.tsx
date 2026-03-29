@@ -225,7 +225,7 @@ export default function ModulesPage() {
           <h2 className="text-2xl md:text-4xl font-display font-bold text-[var(--text-primary)] mb-3">
             Ready to start?
           </h2>
-          <p className="text-[var(--text-secondary)] mb-6">Module 1 takes about 30 minutes. No signup required.</p>
+          <p className="text-[var(--text-secondary)] mb-6">No signup required. Jump in and start learning.</p>
           <Link
             href="/modules/module-1"
             className="group inline-flex items-center justify-center font-display font-bold px-8 py-4 rounded-2xl text-lg transition-all duration-200 hover:scale-105 active:scale-95 relative overflow-hidden"

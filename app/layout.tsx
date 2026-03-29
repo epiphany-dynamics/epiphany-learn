@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "AI for Everyone — Epiphany Dynamics",
   description:
-    "Learn AI in 30-minute modules. Cut through the hype and build real skills you can use every day. Free, gamified, no signup required.",
+    "Learn AI in bite-sized modules. Cut through the hype and build real skills you can use every day. Free, gamified, no signup required.",
   metadataBase: new URL("https://epiphany.help"),
   openGraph: {
     title: "Learn AI Without the Hype — Free, Gamified Modules",

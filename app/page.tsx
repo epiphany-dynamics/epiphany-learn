@@ -707,7 +707,7 @@ export default function HomePage() {
             Ready to actually understand AI?
           </h2>
           <p className="text-[var(--text-secondary)] mb-8 text-lg max-w-xl mx-auto">
-            Module 1 takes 30 minutes. No signup. No credit card. Just start learning.
+            No signup. No credit card. Just start learning.
           </p>
           <Link
             href="/modules/module-1"
