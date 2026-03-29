@@ -6,9 +6,6 @@ import { usePathname } from "next/navigation";
 export default function GlobalNav() {
   const pathname = usePathname();
 
-  // Don't show on the homepage — it has its own nav
-  if (pathname === "/") return null;
-
   return (
     <nav
       className="w-full border-b sticky top-0 z-40"
