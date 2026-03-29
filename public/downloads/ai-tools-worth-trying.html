@@ -294,12 +294,15 @@
   /* ─── PRINT STYLES ─── */
   @media print {
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+    .section { break-inside: auto !important; }
+    .term-card { break-inside: avoid; page-break-inside: avoid; }
+    .header { break-after: avoid; }
     html, body { background: #050505 !important; }
     body { background: #050505; }
     .page { max-width: 100%; }
     .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .tool-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
-    .section { break-inside: avoid; }
+    .tool-card { -webkit-print-color-adjust: exact; print-color-adjust: exact;  }
+    .section {  }
     .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
