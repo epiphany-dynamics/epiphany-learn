@@ -136,29 +136,59 @@ export default function Certificate({ userName, completionDate, totalXP }: Props
     ctx.lineTo(W - 100, 660);
     ctx.stroke();
 
-    // Branding
-    ctx.fillStyle = "rgba(240, 239, 235, 0.3)";
-    ctx.font = "500 14px Montserrat, sans-serif";
-    ctx.fillText("Epiphany Dynamics — Work, Reimagined.", W / 2, 710);
-
-    ctx.fillStyle = "rgba(240, 239, 235, 0.15)";
-    ctx.font = "400 12px Montserrat, sans-serif";
-    ctx.fillText("epiphanydynamics.ai", W / 2, 735);
-
-    // Verification text
-    ctx.fillStyle = "rgba(240, 239, 235, 0.1)";
-    ctx.font = "400 10px Montserrat, sans-serif";
-    ctx.fillText("This certificate was generated at epiphany.help — a free AI education platform by Epiphany Dynamics", W / 2, 790);
+    // Branding text is drawn after icon loads in handleDownload
   }, [userName, completionDate, totalXP]);
 
   function handleDownload() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     drawCertificate(canvas);
-    const link = document.createElement("a");
-    link.download = `AI-Literate-Certificate-${userName.replace(/\s+/g, "-")}.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+
+    const W = 1200;
+    const ctxAfter = canvas.getContext("2d");
+
+    // Load the ED icon, draw branding, then export
+    const icon = new Image();
+    icon.crossOrigin = "anonymous";
+    icon.onload = () => {
+      if (ctxAfter) {
+        const iconSize = 52;
+        ctxAfter.drawImage(icon, W / 2 - iconSize / 2, 670, iconSize, iconSize);
+
+        ctxAfter.fillStyle = "rgba(240, 239, 235, 0.3)";
+        ctxAfter.font = "500 14px Montserrat, sans-serif";
+        ctxAfter.textAlign = "center";
+        ctxAfter.fillText("Epiphany Dynamics — Work, Reimagined.", W / 2, 745);
+
+        ctxAfter.fillStyle = "rgba(240, 239, 235, 0.15)";
+        ctxAfter.font = "400 12px Montserrat, sans-serif";
+        ctxAfter.fillText("epiphanydynamics.ai", W / 2, 765);
+
+        ctxAfter.fillStyle = "rgba(240, 239, 235, 0.1)";
+        ctxAfter.font = "400 10px Montserrat, sans-serif";
+        ctxAfter.fillText("This certificate was generated at epiphany.help — a free AI education platform by Epiphany Dynamics", W / 2, 800);
+      }
+      const link = document.createElement("a");
+      link.download = `AI-Literate-Certificate-${userName.replace(/\s+/g, "-")}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    };
+    icon.onerror = () => {
+      if (ctxAfter) {
+        ctxAfter.fillStyle = "rgba(240, 239, 235, 0.3)";
+        ctxAfter.font = "500 14px Montserrat, sans-serif";
+        ctxAfter.textAlign = "center";
+        ctxAfter.fillText("Epiphany Dynamics — Work, Reimagined.", W / 2, 710);
+        ctxAfter.fillStyle = "rgba(240, 239, 235, 0.15)";
+        ctxAfter.font = "400 12px Montserrat, sans-serif";
+        ctxAfter.fillText("epiphanydynamics.ai", W / 2, 735);
+      }
+      const link = document.createElement("a");
+      link.download = `AI-Literate-Certificate-${userName.replace(/\s+/g, "-")}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    };
+    icon.src = "/images/ed-icon.png";
   }
 
   return (
