@@ -37,6 +37,9 @@ export const metadata: Metadata = {
   description:
     "Learn AI in bite-sized modules. Cut through the hype and build real skills you can use every day. Free, gamified, no signup required.",
   metadataBase: new URL("https://epiphany.help"),
+  verification: {
+    google: "qnZM-ul4YDP07ZQCztpnsq6A0vASIXfWIzT2p7pxixM",
+  },
   openGraph: {
     title: "Learn AI Without the Hype — Free, Gamified Modules",
     description:
