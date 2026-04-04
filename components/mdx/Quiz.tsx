@@ -295,32 +295,50 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
       feedbackRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, 300);
 
-    // Auto-advance
+    // Clear visual effects after a short delay (emojis/particles only)
     setTimeout(() => {
       setShowEmojis(false);
       setShowParticles(false);
-      if (currentQ < questions.length - 1) {
-        setCurrentQ((c) => c + 1);
-        setSelectedId(null);
-        setTimerPaused(false);
-        startTimeRef.current = Date.now();
-        setPhase("question");
-      } else {
-        setPhase("results");
-      }
     }, 3000);
   }, [phase, selectedId, currentQ, questions, timePerQuestion]);
+
+  // ─── Manual continue to next question ───
+  const handleContinue = useCallback(() => {
+    if (phase !== "feedback") return;
+    setShowEmojis(false);
+    setShowParticles(false);
+    if (currentQ < questions.length - 1) {
+      setCurrentQ((c) => c + 1);
+      setSelectedId(null);
+      setTimerPaused(false);
+      startTimeRef.current = Date.now();
+      setPhase("question");
+    } else {
+      setPhase("results");
+    }
+  }, [phase, currentQ, questions.length]);
 
   // ─── Time's up handler ───
   const handleTimeUp = useCallback(() => {
     handleAnswer(null);
   }, [handleAnswer]);
 
-  // ─── Keyboard answer selection (Kahoot: 1-4 keys select answers) ───
+  // ─── Keyboard: 1-4 to answer, Enter/Space to continue ───
   useEffect(() => {
-    if (phase !== "question" || selectedId !== null) return;
     function onKey(e: KeyboardEvent) {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+
+      // During feedback: Enter or Space advances
+      if (phase === "feedback") {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleContinue();
+        }
+        return;
+      }
+
+      // During question: 1-4 keys select answers
+      if (phase !== "question" || selectedId !== null) return;
       const q = questions[currentQ];
       if (!q) return;
       const keyMap: Record<string, number> = { "1": 0, "2": 1, "3": 2, "4": 3 };
@@ -332,7 +350,7 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [phase, selectedId, currentQ, questions, handleAnswer]);
+  }, [phase, selectedId, currentQ, questions, handleAnswer, handleContinue]);
 
   function handleStart() {
     // Re-select random questions from pool each play (Kahoot: different questions each replay)
@@ -664,6 +682,17 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
                         )}
                       </div>
                       <p style={{ color: "rgba(240,239,235,0.7)" }}>{q.explanation}</p>
+                      {/* Continue button — user controls pacing */}
+                      <button
+                        onClick={handleContinue}
+                        className="mt-3 font-display font-bold px-6 py-2.5 rounded-xl text-white text-sm transition-all hover:scale-105 active:scale-95"
+                        style={{
+                          background: currentQ < questions.length - 1 ? "#1368CE" : "#26890C",
+                          boxShadow: currentQ < questions.length - 1 ? "0 4px 16px rgba(19,104,206,0.35)" : "0 4px 16px rgba(38,137,12,0.35)",
+                        }}
+                      >
+                        {currentQ < questions.length - 1 ? "Next Question →" : "See Results →"}
+                      </button>
                     </div>
                   </div>
                 </div>
