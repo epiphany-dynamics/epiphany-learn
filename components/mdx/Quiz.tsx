@@ -246,6 +246,7 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
   const [showParticles, setShowParticles] = useState(false);
   const startTimeRef = useRef(Date.now());
   const feedbackRef = useRef<HTMLDivElement>(null);
+  const quizTopRef = useRef<HTMLDivElement>(null);
 
   // ─── Intro countdown 3-2-1 ───
   useEffect(() => {
@@ -313,6 +314,10 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
       setTimerPaused(false);
       startTimeRef.current = Date.now();
       setPhase("question");
+      // Snap back to quiz top so the next question is visible
+      setTimeout(() => {
+        quizTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
     } else {
       setPhase("results");
     }
@@ -378,7 +383,7 @@ export default function Quiz({ questions: questionPool, count, timePerQuestion =
   // ═══════════════════════════════════════════════════
 
   return (
-    <div className="my-10 rounded-3xl overflow-hidden relative quiz-container" style={{ background: "#0A0A0A", border: "2px solid rgba(255,255,255,0.1)" }}>
+    <div ref={quizTopRef} className="my-10 rounded-3xl overflow-hidden relative quiz-container" style={{ background: "#0A0A0A", border: "2px solid rgba(255,255,255,0.1)" }}>
 
       {/* ═══════ IDLE — Start Button ═══════ */}
       {phase === "idle" && (
