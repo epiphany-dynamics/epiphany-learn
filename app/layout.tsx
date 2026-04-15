@@ -50,8 +50,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/og-image.png",
-        width: 1536,
-        height: 1024,
+        width: 1376,
+        height: 768,
         alt: "Epiphany Learn — AI education for everyone",
       },
     ],
@@ -65,6 +65,44 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Epiphany Learn",
+  url: "https://epiphany.help",
+  description:
+    "Free, gamified AI learning platform. 7 modules, 29 lessons, 300+ quiz questions. Built by Epiphany Dynamics.",
+  publisher: {
+    "@type": "Organization",
+    name: "Epiphany Dynamics",
+    url: "https://epiphanydynamics.ai",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://epiphanydynamics.ai/logo.png",
+    },
+  },
+};
+
+const educationalOrgSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "Epiphany Learn",
+  url: "https://epiphany.help",
+  description:
+    "Free AI education platform covering AI fundamentals, automation, productivity, and business applications. No signup required.",
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Epiphany Dynamics",
+    url: "https://epiphanydynamics.ai",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+    name: "Free AI Courses",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -73,6 +111,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(educationalOrgSchema) }}
+        />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
