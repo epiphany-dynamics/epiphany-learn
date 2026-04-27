@@ -1,0 +1,8 @@
+# Epiphany Learn
+Gamified AI education platform — learn AI in 30-minute modules.
+Owned by: Epiphany Dynamics (Wikidata Q139569923, https://epiphanydynamics.ai)
+Creator: Patrick Gibbs (Wikidata Q139572015)
+Modules: 7
+Lessons: 29
+Quiz questions: 300+
+Audience: business owners and operators learning AI for the first time.
