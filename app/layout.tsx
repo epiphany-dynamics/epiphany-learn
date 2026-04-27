@@ -142,6 +142,70 @@ const personSchema = {
   founder: "https://www.wikidata.org/wiki/Q139569923",
 };
 
+const courseProvider = {
+  "@type": "Organization",
+  "@id": "https://www.wikidata.org/wiki/Q139569923",
+  name: "Epiphany Dynamics",
+  url: "https://epiphanydynamics.ai",
+  sameAs: [
+    "https://www.wikidata.org/wiki/Q139569923",
+    "https://github.com/epiphany-dynamics",
+    "https://www.linkedin.com/company/epiphanydynamics",
+    "https://epiphanydynamics.ai",
+  ],
+};
+
+const modules = [
+  { id: 1, title: "What AI Actually Is", subtitle: "Cut through the hype and understand what's really going on", minutes: 30 },
+  { id: 2, title: "Talking to AI", subtitle: "How to actually get good results from ChatGPT, Claude, and friends", minutes: 35 },
+  { id: 3, title: "AI in Your Everyday Life", subtitle: "Real ways AI can save you time starting today", minutes: 30 },
+  { id: 4, title: "Staying Safe and Smart with AI", subtitle: "What you need to know to protect yourself", minutes: 32 },
+  { id: 5, title: "Evaluating AI Tools and Vendors", subtitle: "Make smarter buying decisions before you spend a dollar", minutes: 32 },
+  { id: 6, title: "Try It Yourself", subtitle: "Your personal AI experiment — start small, see results", minutes: 32 },
+  { id: 7, title: "AI Anxiety Is Normal", subtitle: "What's really happening — and what you can actually do about it", minutes: 30 },
+];
+
+const courseListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Epiphany Learn — AI Education Modules",
+  description: "Free 7-module curriculum teaching AI fundamentals to non-technical learners.",
+  itemListOrder: "https://schema.org/ItemListOrderAscending",
+  numberOfItems: modules.length,
+  itemListElement: modules.map((m, idx) => ({
+    "@type": "ListItem",
+    position: idx + 1,
+    item: {
+      "@type": "Course",
+      "@id": `https://epiphany.help/learn/module-${m.id}`,
+      name: `Module ${m.id}: ${m.title}`,
+      description: m.subtitle,
+      url: `https://epiphany.help/learn/module-${m.id}`,
+      provider: courseProvider,
+      educationalLevel: "Beginner",
+      inLanguage: "en",
+      isAccessibleForFree: true,
+      teaches: m.title,
+      hasCourseInstance: [{
+        "@type": "CourseInstance",
+        courseMode: "online",
+        courseWorkload: `PT${m.minutes}M`,
+        instructor: {
+          "@type": "Person",
+          "@id": "https://www.wikidata.org/wiki/Q139572015",
+          name: "Patrick Gibbs",
+        },
+      }],
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        category: "Free",
+      },
+    },
+  })),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -161,6 +225,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(courseListSchema) }}
         />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
