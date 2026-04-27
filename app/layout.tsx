@@ -74,6 +74,7 @@ const websiteSchema = {
     "Free, gamified AI learning platform. 7 modules, 29 lessons, 300+ quiz questions. Built by Epiphany Dynamics.",
   publisher: {
     "@type": "Organization",
+    "@id": "https://www.wikidata.org/wiki/Q139569923",
     name: "Epiphany Dynamics",
     url: "https://epiphanydynamics.ai",
     logo: {
@@ -89,11 +90,29 @@ const educationalOrgSchema = {
   name: "Epiphany Learn",
   url: "https://epiphany.help",
   description:
-    "Free AI education platform covering AI fundamentals, automation, productivity, and business applications. No signup required.",
+    "Gamified AI education platform — learn AI in 30-minute modules. 7 modules, 29 lessons, 300+ quiz questions.",
   parentOrganization: {
     "@type": "Organization",
+    "@id": "https://www.wikidata.org/wiki/Q139569923",
     name: "Epiphany Dynamics",
     url: "https://epiphanydynamics.ai",
+    sameAs: [
+      "https://www.wikidata.org/wiki/Q139569923",
+      "https://github.com/epiphany-dynamics",
+      "https://www.linkedin.com/company/epiphanydynamics",
+      "https://www.crunchbase.com/organization/epiphany-dynamics",
+      "https://epiphanydynamics.ai",
+    ],
+  },
+  founder: {
+    "@type": "Person",
+    "@id": "https://www.wikidata.org/wiki/Q139572015",
+    name: "Patrick Gibbs",
+    sameAs: [
+      "https://www.wikidata.org/wiki/Q139572015",
+      "https://github.com/patrickg21212",
+      "https://www.linkedin.com/in/patrick-gibbs-839b7b237",
+    ],
   },
   offers: {
     "@type": "Offer",
@@ -101,6 +120,26 @@ const educationalOrgSchema = {
     priceCurrency: "USD",
     name: "Free AI Courses",
   },
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.wikidata.org/wiki/Q139572015",
+  name: "Patrick Gibbs",
+  url: "https://epiphanydynamics.ai",
+  sameAs: [
+    "https://www.wikidata.org/wiki/Q139572015",
+    "https://github.com/patrickg21212",
+    "https://www.linkedin.com/in/patrick-gibbs-839b7b237",
+  ],
+  worksFor: {
+    "@type": "Organization",
+    "@id": "https://www.wikidata.org/wiki/Q139569923",
+    name: "Epiphany Dynamics",
+    url: "https://epiphanydynamics.ai",
+  },
+  founder: "https://www.wikidata.org/wiki/Q139569923",
 };
 
 export default function RootLayout({
@@ -118,6 +157,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(educationalOrgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
