@@ -2,9 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 export default function GlobalNav() {
   const pathname = usePathname();
+  const [signedIn, setSignedIn] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setSignedIn(!!user?.email);
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <nav
@@ -53,6 +64,15 @@ export default function GlobalNav() {
           >
             Rewards
           </Link>
+          {!signedIn && (
+            <Link
+              href="/dashboard"
+              className="text-xs font-semibold transition-colors"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </nav>

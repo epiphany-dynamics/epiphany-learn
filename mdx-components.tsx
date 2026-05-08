@@ -8,6 +8,7 @@ import StatHighlight from "@/components/mdx/StatHighlight";
 import SectionDivider from "@/components/mdx/SectionDivider";
 import SlideBreak from "@/components/lesson/SlideBreak";
 import Visual from "@/components/mdx/Visual";
+import MdxTable from "@/components/mdx/MdxTable";
 
 // These are handled by the parent LessonContent component — no-ops to avoid duplicate UI.
 function LessonComplete() { return null; }
@@ -31,6 +32,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Visual,
     LessonComplete,
     ModuleComplete,
+    table: MdxTable,
     hr: SlideBreak,
     ...components,
   };

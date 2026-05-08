@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { signUp, signIn, signOut, getCurrentUser, type SyncUser } from "@/lib/sync";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { signUp, signIn, signOut, type SyncUser } from "@/lib/sync";
 
 type Mode = "idle" | "signup" | "signin";
 
@@ -12,12 +14,19 @@ export default function AccountSync() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState<"signup" | "signin" | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    getCurrentUser().then(setUser);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser?.email) {
+        setUser({ id: firebaseUser.uid, email: firebaseUser.email });
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
   if (!mounted) return null;
@@ -36,20 +45,22 @@ export default function AccountSync() {
     if (result.error) {
       setError(result.error);
     } else {
-      setSuccess(true);
-      const u = await getCurrentUser();
-      setUser(u);
+      const isSignIn = mode === "signin";
+      setSuccess(isSignIn ? "signin" : "signup");
       setMode("idle");
-      setTimeout(() => setSuccess(false), 4000);
+      if (isSignIn) {
+        setTimeout(() => window.location.reload(), 1200);
+      } else {
+        setTimeout(() => setSuccess(null), 4000);
+      }
     }
   }
 
   async function handleSignOut() {
     await signOut();
-    setUser(null);
   }
 
-  // Signed in — show account info
+  // Signed in
   if (user) {
     return (
       <div className="rounded-xl p-4 flex items-center justify-between" style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.08)" }}>
@@ -73,7 +84,7 @@ export default function AccountSync() {
     return (
       <div className="rounded-xl p-4 text-center" style={{ background: "rgba(38, 137, 12, 0.1)", border: "1px solid rgba(38, 137, 12, 0.2)" }}>
         <p className="text-sm font-semibold" style={{ color: "#4CD929" }}>
-          {mode === "signup" ? "✓ Account created! Progress saved." : "✓ Signed in! Progress synced."}
+          {success === "signup" ? "✓ Account created! Progress saved." : "✓ Signed in! Loading your progress..."}
         </p>
       </div>
     );
@@ -136,7 +147,7 @@ export default function AccountSync() {
     );
   }
 
-  // Default — invite to sync (non-intrusive)
+  // Default — invite to sync
   return (
     <div className="rounded-xl p-4 text-center" style={{ background: "#0A0A0A", border: "1px dashed rgba(255,255,255,0.1)" }}>
       <p className="text-sm mb-3" style={{ color: "rgba(240, 239, 235, 0.5)" }}>

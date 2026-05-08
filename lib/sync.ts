@@ -1,7 +1,7 @@
 /**
  * Firebase cross-device sync for progress data.
+ * Uses Firestore REST API directly (bypasses SDK WebChannel issues).
  * Users remain anonymous unless they opt in to create an account.
- * Email capture is a byproduct of account creation, NEVER required to access content.
  */
 
 import {
@@ -10,13 +10,50 @@ import {
   signOut as firebaseSignOut,
   onAuthStateChanged,
 } from "firebase/auth"
-import { doc, getDoc, setDoc } from "firebase/firestore"
-import { auth, db } from "./firebase"
+import { auth } from "./firebase"
 import { getProgress, saveProgress, type ProgressState } from "./progress"
 
 export interface SyncUser {
   id: string
   email: string
+}
+
+const PROJECT_ID = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!
+const FIRESTORE_BASE = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents`
+
+async function firestoreGet(userId: string, idToken: string): Promise<ProgressState | null> {
+  const res = await fetch(`${FIRESTORE_BASE}/user_progress/${userId}`, {
+    headers: { Authorization: `Bearer ${idToken}` },
+  })
+  if (res.status === 404) return null
+  if (!res.ok) {
+    const text = await res.text()
+    throw new Error(`Firestore GET ${res.status}: ${text}`)
+  }
+  const doc = await res.json()
+  const raw = doc.fields?.progress_json?.stringValue
+  if (!raw) return null
+  return JSON.parse(raw) as ProgressState
+}
+
+async function firestorePatch(userId: string, idToken: string, state: ProgressState): Promise<void> {
+  const res = await fetch(`${FIRESTORE_BASE}/user_progress/${userId}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${idToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      fields: {
+        progress_json: { stringValue: JSON.stringify(state) },
+        updated_at: { stringValue: new Date().toISOString() },
+      },
+    }),
+  })
+  if (!res.ok) {
+    const text = await res.text()
+    throw new Error(`Firestore PATCH ${res.status}: ${text}`)
+  }
 }
 
 export async function getCurrentUser(): Promise<SyncUser | null> {
@@ -39,7 +76,6 @@ export async function signUp(email: string, password: string): Promise<{ error: 
     return { error: null }
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Signup failed"
-    // Clean up Firebase error messages
     if (message.includes("auth/email-already-in-use")) return { error: "An account with this email already exists. Try signing in." }
     if (message.includes("auth/weak-password")) return { error: "Password must be at least 6 characters." }
     if (message.includes("auth/invalid-email")) return { error: "Please enter a valid email address." }
@@ -65,36 +101,36 @@ export async function signOut(): Promise<void> {
   await firebaseSignOut(auth)
 }
 
-export async function pushProgressToCloud(): Promise<void> {
+export async function pushProgressToCloud(): Promise<{ error: string | null }> {
   const user = auth.currentUser
-  if (!user) return
+  if (!user) return { error: "Not signed in" }
 
-  const state = getProgress()
   try {
-    await setDoc(doc(db, "user_progress", user.uid), {
-      progress_json: JSON.parse(JSON.stringify(state)),
-      updated_at: new Date().toISOString(),
-    })
+    const idToken = await user.getIdToken()
+    const state = getProgress()
+    await firestorePatch(user.uid, idToken, state)
+    return { error: null }
   } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
     console.error("[sync] push failed:", err)
+    return { error: msg }
   }
 }
 
-export async function pullProgressFromCloud(): Promise<void> {
+export async function pullProgressFromCloud(): Promise<{ error: string | null }> {
   const user = auth.currentUser
-  if (!user) return
+  if (!user) return { error: "Not signed in" }
 
   try {
-    const snap = await getDoc(doc(db, "user_progress", user.uid))
-    if (!snap.exists()) {
-      // First sign-in on this device — push local progress up
-      await pushProgressToCloud()
-      return
+    const idToken = await user.getIdToken()
+    const cloudState = await firestoreGet(user.uid, idToken)
+
+    if (!cloudState) {
+      // No cloud data yet — push local progress up
+      return await pushProgressToCloud()
     }
 
-    const cloudState = snap.data().progress_json as ProgressState
     const localState = getProgress()
-
     const merged: ProgressState = {
       ...localState,
       xp: Math.max(localState.xp, cloudState.xp ?? 0),
@@ -107,8 +143,11 @@ export async function pullProgressFromCloud(): Promise<void> {
     }
 
     saveProgress(merged)
+    return { error: null }
   } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
     console.error("[sync] pull failed:", err)
+    return { error: msg }
   }
 }
 
