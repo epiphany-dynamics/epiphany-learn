@@ -108,6 +108,23 @@ export default function DashboardClient({ modules }: Props) {
     .filter((l) => l.completed).length;
   const totalLessons = modules.reduce((a, m) => a + m.lessons.length, 0);
 
+  // Find the best "continue" destination: next incomplete module if last visited is done
+  function getContinueHref(): string {
+    if (!lastVisited || !progress) return "/modules";
+    const lastModDone = progress.modules[lastVisited.moduleId]?.completed;
+    if (!lastModDone) {
+      return `/modules/${lastVisited.moduleId}/${lastVisited.lessonSlug}`;
+    }
+    // Last visited module is complete — find the next incomplete one
+    const nextModule = modules.find((m) => !progress.modules[m.id]?.completed);
+    if (nextModule) {
+      return `/modules/${nextModule.id}/${nextModule.lessons[0].slug}`;
+    }
+    // All modules complete
+    return "/modules";
+  }
+  const continueHref = getContinueHref();
+
   return (
     <main className="min-h-screen bg-[var(--bg-page)]">
       {/* ============ HEADER — with larger visual area ============ */}
@@ -144,7 +161,7 @@ export default function DashboardClient({ modules }: Props) {
             <span className="text-[var(--text-secondary)] font-medium text-sm">Your Progress</span>
           </div>
           <Link
-            href="/modules"
+            href={continueHref}
             className="group inline-flex items-center gap-2 font-display font-bold px-5 py-2.5 rounded-xl text-sm text-white transition-all hover:scale-105 active:scale-95 relative overflow-hidden"
             style={{ background: "linear-gradient(135deg, #E21B3C, #FF4757)", boxShadow: "0 4px 16px rgba(226,27,60,0.3)" }}
           >
@@ -170,31 +187,43 @@ export default function DashboardClient({ modules }: Props) {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 py-8 space-y-8">
+        {/* ============ ACCOUNT SYNC ============ */}
+        <AccountSync />
+
         {/* ============ RESUME CARD ============ */}
-        {lastVisited && (
-          <div
-            className="rounded-2xl p-6 flex items-center justify-between gap-4 animate-fade-in-up relative overflow-hidden"
-            style={{ background: "rgba(19,104,206,0.08)", border: "1px solid rgba(19,104,206,0.2)" }}
-          >
-            {/* Animated floating bookmark */}
-            <div className="absolute top-2 right-16 text-4xl opacity-[0.06] pointer-events-none select-none animate-float" style={{ animationDuration: "4s" }}>📖</div>
-            <div className="absolute bottom-2 right-4 text-3xl opacity-[0.04] pointer-events-none select-none animate-float" style={{ animationDelay: "2s", animationDuration: "5s" }}>📝</div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: "#4DA3FF" }}>
-                Resume where you left off
-              </p>
-              <p className="font-display font-semibold text-[var(--text-primary)]">{lastVisited.lessonTitle}</p>
-            </div>
-            <Link
-              href={`/modules/${lastVisited.moduleId}/${lastVisited.lessonSlug}`}
-              className="flex-shrink-0 group font-display font-bold text-white px-5 py-2.5 rounded-xl transition-all hover:scale-105 hover:brightness-110 text-sm relative overflow-hidden"
-              style={{ background: "linear-gradient(135deg, #1368CE, #2B8BF5)" }}
+        {lastVisited && (() => {
+          const lastModDone = progress.modules[lastVisited.moduleId]?.completed;
+          const nextModule = lastModDone ? modules.find((m) => !progress.modules[m.id]?.completed) : null;
+          const label = lastModDone && nextModule
+            ? `Start next: ${nextModule.title}`
+            : lastVisited.lessonTitle;
+          const heading = lastModDone && nextModule
+            ? "Ready for the next module"
+            : "Resume where you left off";
+          return (
+            <div
+              className="rounded-2xl p-6 flex items-center justify-between gap-4 animate-fade-in-up relative overflow-hidden"
+              style={{ background: "rgba(19,104,206,0.08)", border: "1px solid rgba(19,104,206,0.2)" }}
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-              <span className="relative">Resume →</span>
-            </Link>
-          </div>
-        )}
+              <div className="absolute top-2 right-16 text-4xl opacity-[0.06] pointer-events-none select-none animate-float" style={{ animationDuration: "4s" }}>📖</div>
+              <div className="absolute bottom-2 right-4 text-3xl opacity-[0.04] pointer-events-none select-none animate-float" style={{ animationDelay: "2s", animationDuration: "5s" }}>📝</div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide mb-1" style={{ color: "#4DA3FF" }}>
+                  {heading}
+                </p>
+                <p className="font-display font-semibold text-[var(--text-primary)]">{label}</p>
+              </div>
+              <Link
+                href={continueHref}
+                className="flex-shrink-0 group font-display font-bold text-white px-5 py-2.5 rounded-xl transition-all hover:scale-105 hover:brightness-110 text-sm relative overflow-hidden"
+                style={{ background: "linear-gradient(135deg, #1368CE, #2B8BF5)" }}
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+                <span className="relative">{lastModDone && nextModule ? "Start →" : "Resume →"}</span>
+              </Link>
+            </div>
+          );
+        })()}
 
         {/* ============ XP + LEVEL + STREAK — with illustrations ============ */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -283,7 +312,7 @@ export default function DashboardClient({ modules }: Props) {
           style={{ background: "linear-gradient(90deg, #E21B3C, #1368CE, #26890C, #FFA602)", padding: "2px", animationDelay: "0.15s" }}
         >
           <div className="bg-[var(--bg-page)] rounded-2xl">
-            <div className="grid grid-cols-3 gap-4 p-6 text-center">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 p-4 sm:p-6 text-center">
               {[
                 { value: totalLessonsCompleted, label: "Lessons Done", illustration: <LessonsStatIllustration />, color: "#1368CE" },
                 { value: earnedBadges.length, label: "Badges Earned", illustration: <BadgesStatIllustration />, color: "#FFA602" },
@@ -492,14 +521,6 @@ export default function DashboardClient({ modules }: Props) {
           </Link>
         </div>
 
-        {/* ============ ACCOUNT SYNC ============ */}
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <h3 className="text-xl font-display font-bold text-[var(--text-primary)]">Sync Across Devices</h3>
-            <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.1), transparent)" }} />
-          </div>
-          <AccountSync />
-        </div>
       </div>
     </main>
   );

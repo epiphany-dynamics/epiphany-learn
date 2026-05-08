@@ -250,7 +250,7 @@ export default function HomePage() {
             </div>
 
             {/* Right illustration — NBP2 generated hero image */}
-            <div className="flex-shrink-0 w-80 h-72 md:w-[480px] md:h-[420px] animate-fade-in-up relative" style={{ animationDelay: "0.3s" }}>
+            <div className="flex-shrink-0 w-full max-w-[320px] h-72 md:w-[480px] md:max-w-none md:h-[420px] animate-fade-in-up relative" style={{ animationDelay: "0.3s" }}>
               {/* Glow backdrop behind image */}
               <div className="absolute inset-0 rounded-full opacity-30" style={{ background: "radial-gradient(circle, rgba(19,104,206,0.4) 0%, rgba(0,201,183,0.2) 40%, transparent 70%)", filter: "blur(40px)" }} />
               <div className="relative z-10 w-full h-full flex items-center justify-center">
@@ -277,7 +277,7 @@ export default function HomePage() {
       <section className="relative" style={{ background: "linear-gradient(90deg, #E21B3C, #1368CE, #26890C, #FFA602)", padding: "3px 0" }}>
         <div style={{ background: "var(--bg-page)" }}>
           <div className="max-w-5xl mx-auto px-6 py-10">
-            <div className="grid grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 text-center">
               {[
                 { value: modules.length, label: "Modules", icon: (
                   <svg viewBox="0 0 48 48" className="w-12 h-12 mx-auto mb-2" fill="none">
