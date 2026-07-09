@@ -82,12 +82,11 @@ pnpm lint    # eslint
 ## Project structure
 
 ```
-app/           Next.js App Router pages (modules, dashboard, rewards)
-components/    UI, lesson, quiz, gamification, auth, nav
-content/       Lesson content as MDX, one directory per module
-lib/           Progress tracking, Firebase sync, achievements, design tokens
-public/        Images and static assets
-docs/planning/ Internal curriculum planning documents (see its README)
+app/         Next.js App Router pages (modules, dashboard, rewards)
+components/  UI, lesson, quiz, gamification, auth, nav
+content/     Lesson content as MDX, one directory per module
+lib/         Progress tracking, Firebase sync, achievements, design tokens
+public/      Images and static assets
 ```
 
 ## Deployment
