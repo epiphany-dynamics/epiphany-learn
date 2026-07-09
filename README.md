@@ -93,6 +93,15 @@ public/      Images and static assets
 
 Pushes to `main` build and deploy to production via `.github/workflows/vercel-deploy.yml`, followed by an IndexNow ping to Bing and Yandex.
 
+## License
+
+This project has two sets of terms.
+
+- **Source code** is licensed under the [MIT License](LICENSE). Use it, fork it, build on it. This includes the interface assets the app needs to run (fonts, icons, badge and reward art, module cover art).
+- **Course content** is copyright 2026 Epiphany Dynamics LLC, all rights reserved. This is the lessons under `content/`, the lesson images under `public/images/generated/`, and the downloadable materials under `public/downloads/`. You may read and learn from it, but not copy, redistribute, republish, or reuse it to build a competing course.
+
+The exact boundary and full terms are in [CONTENT_LICENSE.md](CONTENT_LICENSE.md).
+
 ---
 
-© Epiphany Dynamics. All rights reserved.
+Built by [Epiphany Dynamics](https://epiphanydynamics.ai).
