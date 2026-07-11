@@ -3,6 +3,7 @@ import { getArticle, getAllArticles } from "@/lib/content";
 import type { ArticleMeta } from "@/lib/content";
 import Link from "next/link";
 import type { Metadata } from "next";
+import NetworkLinks from "@/components/NetworkLinks";
 
 interface Props {
   params: { slug: string };
@@ -127,6 +128,8 @@ export default async function ArticlePage({ params }: Props) {
           <div className="prose-lesson max-w-none">
             <Content />
           </div>
+
+          <NetworkLinks links={article.networkLinks} />
         </article>
       </main>
     </>
