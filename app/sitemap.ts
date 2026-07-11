@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getAllModules, getAllLessonSlugs } from "@/lib/content";
+import { getAllModules, getAllLessonSlugs, getAllArticles } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://epiphany.help";
@@ -27,5 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...moduleRoutes, ...lessonRoutes];
+  const articleRoutes: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
+    url: `${base}/articles/${a.slug}`,
+    lastModified: new Date(a.updated || a.pubDate),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...moduleRoutes, ...lessonRoutes, ...articleRoutes];
 }

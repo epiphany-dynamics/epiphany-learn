@@ -98,3 +98,40 @@ export function getAllLessonSlugs(): Array<{ moduleId: string; slug: string }> {
     }))
   )
 }
+
+// --- Articles ---
+
+export interface ArticleMeta {
+  slug: string
+  title: string
+  description: string
+  seoTitle: string
+  focusKeyword: string
+  pubDate: string
+  updated?: string | null
+  image?: string | null
+  draft: boolean
+  networkLinks?: { title: string; url: string; site: string }[]
+}
+
+const ARTICLES_INDEX = path.join(CONTENT_DIR, 'articles', 'index.json')
+
+let articlesCache: ArticleMeta[] | null = null
+
+export function getAllArticles(): ArticleMeta[] {
+  if (articlesCache) return articlesCache
+  try {
+    const raw = fs.readFileSync(ARTICLES_INDEX, 'utf-8')
+    articlesCache = (JSON.parse(raw) as ArticleMeta[])
+      .filter((a) => !a.draft)
+      .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+    return articlesCache
+  } catch {
+    articlesCache = []
+    return []
+  }
+}
+
+export function getArticle(slug: string): ArticleMeta | null {
+  return getAllArticles().find((a) => a.slug === slug) || null
+}
