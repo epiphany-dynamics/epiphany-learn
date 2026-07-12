@@ -5,6 +5,10 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Articles - Epiphany Learn",
   description: "Practical guides on using AI to work smarter, learn faster, and grow your career.",
+  alternates: {
+    canonical: "/articles",
+    types: { "application/rss+xml": "/rss.xml" },
+  },
 };
 
 export default function ArticlesPage() {

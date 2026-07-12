@@ -1,10 +1,10 @@
 interface NetworkLink {
   title: string;
   url: string;
-  site: string;
+  site: 'ed' | 'fss' | 'calc' | 'help' | 'hype';
 }
 
-const siteLabels: Record<string, string> = {
+const siteLabels: Record<NetworkLink['site'], string> = {
   ed: 'Epiphany Dynamics',
   fss: 'Field Service Stack',
   calc: 'AI for Biz Calculator',
@@ -29,7 +29,7 @@ export default function NetworkLinks({ links }: { links?: NetworkLink[] }) {
               {link.title}
             </a>
             <span className="text-white/40 text-sm ml-2">
-              ({siteLabels[link.site] || link.site})
+              ({siteLabels[link.site]})
             </span>
           </li>
         ))}

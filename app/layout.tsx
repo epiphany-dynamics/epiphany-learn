@@ -39,6 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://epiphany.help"),
   alternates: {
     canonical: "/",
+    types: { "application/rss+xml": "/rss.xml" },
   },
   verification: {
     google: "qnZM-ul4YDP07ZQCztpnsq6A0vASIXfWIzT2p7pxixM",

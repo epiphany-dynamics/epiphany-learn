@@ -9,6 +9,8 @@ interface Props {
   params: { slug: string };
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllArticles().map((a: ArticleMeta) => ({ slug: a.slug }));
 }
@@ -19,7 +21,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${article.seoTitle} - Epiphany Learn`,
     description: article.description,
-    openGraph: article.image ? { images: [article.image] } : undefined,
+    alternates: {
+      canonical: `/articles/${article.slug}`,
+      types: { "application/rss+xml": "/rss.xml" },
+    },
+    openGraph: {
+      type: "article",
+      url: `/articles/${article.slug}`,
+      publishedTime: article.pubDate,
+      modifiedTime: article.updated || article.pubDate,
+      images: article.image ? [article.image] : undefined,
+    },
   };
 }
 
@@ -86,6 +98,9 @@ export default async function ArticlePage({ params }: Props) {
     datePublished: article.pubDate,
     dateModified: article.updated || article.pubDate,
     mainEntityOfPage: { "@type": "WebPage", "@id": pageURL },
+    ...(article.image
+      ? { image: new URL(article.image, "https://epiphany.help").href }
+      : {}),
   };
 
   const breadcrumbSchema = {

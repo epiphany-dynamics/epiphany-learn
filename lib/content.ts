@@ -111,7 +111,33 @@ export interface ArticleMeta {
   updated?: string | null
   image?: string | null
   draft: boolean
-  networkLinks?: { title: string; url: string; site: string }[]
+  networkLinks?: { title: string; url: string; site: NetworkSiteId }[]
+}
+
+export type NetworkSiteId = 'ed' | 'fss' | 'calc' | 'help' | 'hype'
+
+const NETWORK_SITE_IDS = new Set<NetworkSiteId>(['ed', 'fss', 'calc', 'help', 'hype'])
+
+function validateNetworkLinks(articles: ArticleMeta[]): ArticleMeta[] {
+  for (const article of articles) {
+    if (!article.networkLinks) continue
+    if (article.networkLinks.length > 4) {
+      throw new Error(`Article ${article.slug} has more than 4 networkLinks`)
+    }
+
+    for (const link of article.networkLinks) {
+      if (!NETWORK_SITE_IDS.has(link.site)) {
+        throw new Error(`Article ${article.slug} has an unknown networkLinks site: ${link.site}`)
+      }
+
+      const url = new URL(link.url)
+      if (url.protocol !== 'https:' && url.protocol !== 'http:') {
+        throw new Error(`Article ${article.slug} has an invalid networkLinks URL: ${link.url}`)
+      }
+    }
+  }
+
+  return articles
 }
 
 const ARTICLES_INDEX = path.join(CONTENT_DIR, 'articles', 'index.json')
@@ -122,13 +148,16 @@ export function getAllArticles(): ArticleMeta[] {
   if (articlesCache) return articlesCache
   try {
     const raw = fs.readFileSync(ARTICLES_INDEX, 'utf-8')
-    articlesCache = (JSON.parse(raw) as ArticleMeta[])
+    articlesCache = validateNetworkLinks(JSON.parse(raw) as ArticleMeta[])
       .filter((a) => !a.draft)
       .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
     return articlesCache
-  } catch {
-    articlesCache = []
-    return []
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      articlesCache = []
+      return []
+    }
+    throw error
   }
 }
 
