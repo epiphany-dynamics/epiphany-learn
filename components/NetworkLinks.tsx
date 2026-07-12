@@ -9,6 +9,7 @@ const siteLabels: Record<string, string> = {
   fss: 'Field Service Stack',
   calc: 'AI for Biz Calculator',
   help: 'Epiphany Learn',
+  hype: 'HypeBench',
 };
 
 export default function NetworkLinks({ links }: { links?: NetworkLink[] }) {
@@ -18,7 +19,7 @@ export default function NetworkLinks({ links }: { links?: NetworkLink[] }) {
     <section className="border-t border-white/10 mt-12 pt-8">
       <h2 className="text-lg font-semibold mb-4">From our network</h2>
       <ul className="space-y-2">
-        {links.map((link) => (
+        {links.slice(0, 4).map((link) => (
           <li key={link.url}>
             <a 
               href={link.url}
