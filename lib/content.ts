@@ -110,6 +110,9 @@ export interface ArticleMeta {
   pubDate: string
   updated?: string | null
   image?: string | null
+  imageAlt?: string | null
+  imageWidth?: number | null
+  imageHeight?: number | null
   draft: boolean
   networkLinks?: { title: string; url: string; site: NetworkSiteId }[]
 }

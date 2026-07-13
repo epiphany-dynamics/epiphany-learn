@@ -19,7 +19,10 @@
     "pubDate": "2026-07-13",
     "draft": false,
     "updated": null,
-    "image": null,
+    "image": "/images/articles/ai-for-beginners.webp",
+    "imageAlt": "Beginner discovering an AI assistant at a home office desk",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
     "networkLinks": []
   },
   {
@@ -31,7 +34,10 @@
     "pubDate": "2026-07-16",
     "draft": false,
     "updated": null,
-    "image": null,
+    "image": "/images/articles/how-to-write-ai-prompts.webp",
+    "imageAlt": "Professional planning a clear AI prompt with a notebook and laptop",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
     "networkLinks": []
   }
 ]

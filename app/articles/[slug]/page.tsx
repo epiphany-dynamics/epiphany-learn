@@ -30,8 +30,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `/articles/${article.slug}`,
       publishedTime: article.pubDate,
       modifiedTime: article.updated || article.pubDate,
-      images: article.image ? [article.image] : undefined,
+      images: article.image
+        ? [{
+            url: new URL(article.image, "https://epiphany.help").href,
+            width: article.imageWidth ?? 1536,
+            height: article.imageHeight ?? 1024,
+            alt: article.imageAlt ?? article.title,
+          }]
+        : undefined,
     },
+    twitter: article.image
+      ? {
+          card: "summary_large_image",
+          images: [{ url: new URL(article.image, "https://epiphany.help").href, alt: article.imageAlt ?? article.title }],
+        }
+      : undefined,
   };
 }
 
@@ -138,6 +151,17 @@ export default async function ArticlePage({ params }: Props) {
               <span>by Patrick Gibbs</span>
               {formattedUpdated && <span>Updated {formattedUpdated}</span>}
             </div>
+            {article.image && (
+              <figure className="mt-6 overflow-hidden rounded-xl border border-white/10">
+                <img
+                  src={article.image}
+                  alt={article.imageAlt ?? article.title}
+                  width={article.imageWidth ?? 1536}
+                  height={article.imageHeight ?? 1024}
+                  className="h-auto w-full"
+                />
+              </figure>
+            )}
           </header>
 
           <div className="prose-lesson max-w-none">
