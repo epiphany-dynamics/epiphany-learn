@@ -39,5 +39,28 @@
     "imageWidth": 1536,
     "imageHeight": 1024,
     "networkLinks": []
+  },
+  {
+    "slug": "how-to-automate-business-processes",
+    "title": "How to Automate Business Processes Without Just Adding AI",
+    "description": "Learn how to automate business processes safely: tell automation from AI, run a low-risk first exercise, use a simple decision framework, and spot signs a process is not ready.",
+    "seoTitle": "How to Automate Business Processes: A Calm Beginner's Guide",
+    "focusKeyword": "how to automate business processes",
+    "tags": [
+      "automation",
+      "business processes",
+      "AI for beginners",
+      "workflow",
+      "process automation",
+      "human in the loop"
+    ],
+    "pubDate": "2026-07-15",
+    "image": "/images/articles/how-to-automate-business-processes.webp",
+    "imageAlt": "Four-step business process automation guide beside an open notebook, pen, and coffee mug labeled Start small, build momentum",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": "2026-07-15",
+    "networkLinks": []
   }
 ]

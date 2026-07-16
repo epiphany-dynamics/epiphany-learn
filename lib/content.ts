@@ -107,6 +107,7 @@ export interface ArticleMeta {
   description: string
   seoTitle: string
   focusKeyword: string
+  tags?: string[]
   pubDate: string
   updated?: string | null
   image?: string | null
@@ -115,6 +116,10 @@ export interface ArticleMeta {
   imageHeight?: number | null
   draft: boolean
   networkLinks?: { title: string; url: string; site: NetworkSiteId }[]
+}
+
+export interface Article extends ArticleMeta {
+  body: string
 }
 
 export type NetworkSiteId = 'ed' | 'fss' | 'calc' | 'help' | 'hype'
@@ -164,6 +169,11 @@ export function getAllArticles(): ArticleMeta[] {
   }
 }
 
-export function getArticle(slug: string): ArticleMeta | null {
-  return getAllArticles().find((a) => a.slug === slug) || null
+export function getArticle(slug: string): Article | null {
+  const metadata = getAllArticles().find((a) => a.slug === slug)
+  if (!metadata) return null
+  const filePath = path.join(CONTENT_DIR, 'articles', `${slug}.mdx`)
+  if (!fs.existsSync(filePath)) return null
+  const { content } = matter(fs.readFileSync(filePath, 'utf-8'))
+  return { ...metadata, body: content }
 }

@@ -4,6 +4,7 @@ import type { ArticleMeta } from "@/lib/content";
 import Link from "next/link";
 import type { Metadata } from "next";
 import NetworkLinks from "@/components/NetworkLinks";
+import { buildFAQSchema } from "@/lib/faq-schema";
 
 interface Props {
   params: { slug: string };
@@ -69,6 +70,7 @@ export default async function ArticlePage({ params }: Props) {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "UTC",
   });
 
   const formattedUpdated = article.updated
@@ -76,6 +78,7 @@ export default async function ArticlePage({ params }: Props) {
         year: "numeric",
         month: "long",
         day: "numeric",
+        timeZone: "UTC",
       })
     : null;
 
@@ -125,17 +128,25 @@ export default async function ArticlePage({ params }: Props) {
       { "@type": "ListItem", position: 3, name: article.title, item: pageURL },
     ],
   };
+  const faqStructuredData = buildFAQSchema(article.body);
+  const jsonLd = (value: Record<string, unknown>) => JSON.stringify(value).replace(/</g, "\\u003c");
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
+      {faqStructuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(faqStructuredData) }}
+        />
+      )}
       <main className="min-h-screen px-6 py-16 max-w-[65ch] mx-auto">
         <nav className="text-sm text-white/40 mb-8">
           <Link href="/articles" className="hover:text-white/70 transition-colors">
