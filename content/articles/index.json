@@ -60,7 +60,23 @@
     "imageWidth": 1536,
     "imageHeight": 1024,
     "draft": false,
-    "updated": "2026-07-15",
-    "networkLinks": []
+    "updated": "2026-07-16",
+    "networkLinks": [
+      {
+        "title": "How to Audit Your Business for Automation (5-Step Framework)",
+        "url": "https://epiphanydynamics.ai/blog/how-to-audit-your-business-for-automation/",
+        "site": "ed"
+      },
+      {
+        "title": "How to Automate Business Processes: Score Candidates Before ROI",
+        "url": "https://ai4bizcalculator.online/blog/how-to-automate-business-processes/",
+        "site": "calc"
+      },
+      {
+        "title": "How to Automate Business Processes: Run a Dispatch-to-Invoice Audit First",
+        "url": "https://fieldservicestack.com/guides/how-to-automate-business-processes/",
+        "site": "fss"
+      }
+    ]
   }
 ]
