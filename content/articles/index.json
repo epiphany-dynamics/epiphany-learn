@@ -67,5 +67,27 @@
         "site": "fss"
       }
     ]
+  },
+  {
+    "slug": "will-ai-take-my-job",
+    "title": "Will AI Take My Job? A Calm, Honest Answer for Beginners",
+    "description": "A plain-English look at whether AI will take your job, which tasks are most exposed, which are safest, and what to do now if you are not technical.",
+    "seoTitle": "Will AI Take My Job? An Honest Beginner Guide",
+    "focusKeyword": "will ai take my job",
+    "tags": [
+      "ai anxiety",
+      "future of work",
+      "ai for beginners",
+      "career advice",
+      "ai skills"
+    ],
+    "pubDate": "2026-07-21",
+    "image": "/images/articles/will-ai-take-my-job.webp",
+    "imageAlt": "Will AI Take My Job? A Calm, Honest Answer for Beginners: will ai take my job",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
