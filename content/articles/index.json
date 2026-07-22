@@ -112,5 +112,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "is-ai-hard-to-learn",
+    "title": "Is AI Hard to Learn? A Calm Guide for Non-Techies",
+    "description": "Is AI hard to learn? Using AI is beginner-friendly and needs no code. See what to learn first, what gets harder, and a simple first-week plan.",
+    "seoTitle": "Is AI Hard to Learn? A Beginner's Honest Answer",
+    "focusKeyword": "is ai hard to learn",
+    "tags": [
+      "ai for beginners",
+      "learn ai",
+      "no code ai",
+      "ai basics",
+      "getting started with ai"
+    ],
+    "pubDate": "2026-07-22",
+    "image": "/images/articles/is-ai-hard-to-learn.webp",
+    "imageAlt": "Is AI Hard to Learn? A Calm Guide for Non-Techies: is ai hard to learn",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
