@@ -47,6 +47,15 @@ export default function GlobalNav() {
             Modules
           </Link>
           <Link
+            href="/articles"
+            className="text-xs font-semibold transition-colors"
+            style={{
+              color: pathname.startsWith("/articles") ? "var(--text-primary)" : "var(--text-muted)",
+            }}
+          >
+            Articles
+          </Link>
+          <Link
             href="/dashboard"
             className="text-xs font-semibold transition-colors"
             style={{
