@@ -134,5 +134,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "prompt-engineering-for-beginners",
+    "title": "Prompt Engineering for Beginners: A Plain-English Start",
+    "description": "Learn prompt engineering for beginners in calm plain English: the role-task-format framing, chain-of-thought, and the vague-prompt mistakes to avoid.",
+    "seoTitle": "Prompt Engineering for Beginners: Plain Guide",
+    "focusKeyword": "prompt engineering for beginners",
+    "tags": [
+      "prompt engineering",
+      "ai for beginners",
+      "prompting",
+      "chain-of-thought",
+      "ai skills"
+    ],
+    "pubDate": "2026-07-23",
+    "image": "/images/articles/prompt-engineering-for-beginners.webp",
+    "imageAlt": "Prompt Engineering for Beginners: A Plain-English Start: prompt engineering for beginners",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
