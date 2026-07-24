@@ -156,5 +156,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "is-chatgpt-confidential",
+    "title": "Is ChatGPT Confidential? A Plain-English Answer",
+    "description": "Is ChatGPT confidential? A calm, plain-English guide to what happens to text you paste, personal vs business tiers, and what you should never share.",
+    "seoTitle": "Is ChatGPT Confidential? Plain-English Guide",
+    "focusKeyword": "is chatgpt confidential",
+    "tags": [
+      "chatgpt privacy",
+      "ai for beginners",
+      "data confidentiality",
+      "ai at work",
+      "ai safety"
+    ],
+    "pubDate": "2026-07-24",
+    "image": "/images/articles/is-chatgpt-confidential.webp",
+    "imageAlt": "Is ChatGPT Confidential? A Plain-English Answer: is chatgpt confidential",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
