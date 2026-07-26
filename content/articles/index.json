@@ -200,5 +200,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "ai-replacing-teachers",
+    "title": "Is AI Replacing Teachers? A Task-by-Task Answer",
+    "description": "A task-level answer on AI replacing teachers: what an assistant can absorb from your week, where it breaks, and what to do about students using it.",
+    "seoTitle": "Is AI Replacing Teachers? A Task-by-Task Answer",
+    "focusKeyword": "ai replacing teachers",
+    "tags": [
+      "ai for teachers",
+      "ai in education",
+      "ai replacing jobs",
+      "ai literacy",
+      "classroom ai policy",
+      "beginner ai"
+    ],
+    "pubDate": "2026-07-26",
+    "image": "/images/articles/ai-replacing-teachers.webp",
+    "imageAlt": "Is AI Replacing Teachers? A Task-by-Task Answer: ai replacing teachers",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
