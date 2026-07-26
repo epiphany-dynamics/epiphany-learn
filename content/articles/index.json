@@ -178,5 +178,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "how-to-spot-ai-writing",
+    "title": "How to Spot AI Writing: A Reader's Practical Guide",
+    "description": "Learn how to spot AI writing by structure, not vibes: the real tells, why detector scores are not evidence, and the one question that settles it.",
+    "seoTitle": "How to Spot AI Writing: A Calm Reader's Guide",
+    "focusKeyword": "how to spot ai writing",
+    "tags": [
+      "ai writing",
+      "ai detection",
+      "beginner ai",
+      "writing skills",
+      "ai literacy"
+    ],
+    "pubDate": "2026-07-26",
+    "image": "/images/articles/how-to-spot-ai-writing.webp",
+    "imageAlt": "How to Spot AI Writing: A Reader's Practical Guide: how to spot ai writing",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
