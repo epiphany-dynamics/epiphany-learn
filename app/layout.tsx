@@ -96,8 +96,19 @@ const educationalOrgSchema = {
     "Free AI education platform covering AI fundamentals, automation, productivity, and business applications. No signup required.",
   parentOrganization: {
     "@type": "Organization",
+    "@id": "https://www.wikidata.org/wiki/Q139569923",
     name: "Epiphany Dynamics",
     url: "https://epiphanydynamics.ai",
+    // Every property in the Epiphany Dynamics network, declared on the parent
+    // so search engines resolve the five domains to one entity.
+    sameAs: [
+      "https://www.wikidata.org/wiki/Q139569923",
+      "https://epiphanydynamics.ai",
+      "https://fieldservicestack.com",
+      "https://ai4bizcalculator.online",
+      "https://epiphany.help",
+      "https://hypebench.buzz",
+    ],
   },
   offers: {
     "@type": "Offer",
