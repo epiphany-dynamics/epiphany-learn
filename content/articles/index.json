@@ -223,5 +223,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "ai-front-desk",
+    "title": "AI Front Desk: A Safe First Setup for Non-Technical Owners",
+    "description": "An AI front desk answers calls and chats before a human does. Learn the safe first setup step, what to skip early, and what to learn next.",
+    "seoTitle": "AI Front Desk: Safe First Steps for Beginners",
+    "focusKeyword": "ai front desk",
+    "tags": [
+      "ai front desk",
+      "ai for small business",
+      "beginner ai",
+      "automation",
+      "customer service"
+    ],
+    "pubDate": "2026-07-28",
+    "image": "/images/articles/ai-front-desk.webp",
+    "imageAlt": "AI Front Desk: A Safe First Setup for Non-Technical Owners: ai front desk",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
