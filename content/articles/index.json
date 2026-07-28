@@ -244,6 +244,22 @@
     "imageHeight": 1024,
     "draft": false,
     "updated": null,
-    "networkLinks": []
+    "networkLinks": [
+      {
+        "site": "fss",
+        "title": "What an AI Front Desk Does With a Field Service Call",
+        "url": "https://fieldservicestack.com/guides/ai-front-desk/"
+      },
+      {
+        "site": "calc",
+        "title": "AI front desk math: call volume, booking rate, payback",
+        "url": "https://ai4bizcalculator.online/blog/ai-front-desk/"
+      },
+      {
+        "site": "hype",
+        "title": "AI Front Desk: Which Models Actually Take the Call",
+        "url": "https://hypebench.buzz/blog/ai-front-desk/"
+      }
+    ]
   }
 ]
