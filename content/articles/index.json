@@ -283,6 +283,27 @@
     "imageHeight": 1024,
     "draft": false,
     "updated": null,
-    "networkLinks": []
+    "networkLinks": [
+      {
+        "site": "fss",
+        "title": "Automated Appointment Reminders That Protect Your Dispatch Board",
+        "url": "https://fieldservicestack.com/guides/automated-appointment-reminders/"
+      },
+      {
+        "site": "calc",
+        "title": "Automated appointment reminders: the break-even math",
+        "url": "https://ai4bizcalculator.online/blog/automated-appointment-reminders/"
+      },
+      {
+        "site": "hype",
+        "title": "Automated appointment reminders: where model hype stops mattering",
+        "url": "https://hypebench.buzz/blog/automated-appointment-reminders/"
+      },
+      {
+        "site": "ed",
+        "title": "Automated Appointment Reminders Free: What Actually Works in 2026",
+        "url": "https://epiphanydynamics.ai/blog/automated-appointment-reminders-free/"
+      }
+    ]
   }
 ]
