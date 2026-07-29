@@ -261,5 +261,28 @@
         "url": "https://hypebench.buzz/blog/ai-front-desk/"
       }
     ]
+  },
+  {
+    "slug": "automated-appointment-reminders",
+    "title": "Automated appointment reminders: a safe first setup",
+    "description": "Learn how automated appointment reminders work, why one plain text message is the safest first step, and a low risk exercise you can practice this week.",
+    "seoTitle": "Automated Appointment Reminders: A Safe First Step",
+    "focusKeyword": "automated appointment reminders",
+    "tags": [
+      "appointment reminders",
+      "automation basics",
+      "small business",
+      "sms",
+      "beginner guide",
+      "scheduling"
+    ],
+    "pubDate": "2026-07-28",
+    "image": "/images/articles/automated-appointment-reminders.webp",
+    "imageAlt": "Automated appointment reminders: a safe first setup: automated appointment reminders",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
