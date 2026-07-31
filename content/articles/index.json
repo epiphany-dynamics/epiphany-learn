@@ -349,5 +349,27 @@
         "url": "https://epiphanydynamics.ai/blog/best-ai-tools-for-physical-therapy/"
       }
     ]
+  },
+  {
+    "slug": "eligibility-automations-physical-therapy-getting-started",
+    "title": "Eligibility automations for physical therapy: start here",
+    "description": "Eligibility automation for physical therapy, explained for non-technical clinic owners: a safe one-week first exercise, what to skip early, and what to learn next.",
+    "seoTitle": "PT Eligibility Automation: A Safe Beginner Start",
+    "focusKeyword": "eligibility automations physical therapy",
+    "tags": [
+      "eligibility automation",
+      "physical therapy",
+      "clinic operations",
+      "automation basics",
+      "beginners"
+    ],
+    "pubDate": "2026-07-30",
+    "image": "/images/articles/eligibility-automations-physical-therapy-getting-started.webp",
+    "imageAlt": "Eligibility automations for physical therapy: start here: eligibility automations physical therapy",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
