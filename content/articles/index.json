@@ -382,5 +382,27 @@
         "url": "https://epiphanydynamics.ai/blog/best-ai-tools-for-physical-therapy/"
       }
     ]
+  },
+  {
+    "slug": "chatgpt-file-upload",
+    "title": "ChatGPT File Upload: A Calm First-Time Walkthrough",
+    "description": "How to upload a file to ChatGPT, which formats work, why scanned PDFs return nonsense, why long files get cut short, and what to remove before you send.",
+    "seoTitle": "ChatGPT File Upload: A Beginner's Walkthrough",
+    "focusKeyword": "chatgpt file upload",
+    "tags": [
+      "chatgpt",
+      "file upload",
+      "ai for beginners",
+      "document privacy",
+      "pdf"
+    ],
+    "pubDate": "2026-07-31",
+    "image": "/images/articles/chatgpt-file-upload.webp",
+    "imageAlt": "ChatGPT File Upload: A Calm First-Time Walkthrough: chatgpt file upload",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]

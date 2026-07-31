@@ -1,0 +1,124 @@
+---
+slug: chatgpt-file-upload
+title: "ChatGPT File Upload: A Calm First-Time Walkthrough"
+description: How to upload a file to ChatGPT, which formats work, why scanned PDFs return nonsense, why long files get cut short, and what to remove before you send.
+seoTitle: "ChatGPT File Upload: A Beginner's Walkthrough"
+focusKeyword: chatgpt file upload
+tags:
+  - chatgpt
+  - file upload
+  - ai for beginners
+  - document privacy
+  - pdf
+pubDate: "2026-07-31"
+image: /images/articles/chatgpt-file-upload.webp
+imageAlt: "ChatGPT File Upload: A Calm First-Time Walkthrough: chatgpt file upload"
+imageWidth: 1536
+imageHeight: 1024
+draft: true
+---
+
+**You can upload files to ChatGPT by clicking the paperclip or plus icon next to the message box, choosing a file, and typing what you want done with it. Text based documents work best. Scanned images of paper, very long files, and anything holding private data need care before you send them.**
+
+If you have only ever typed into the box, adding a document feels like a bigger step than it is. The button is easy. What is not obvious is what happens after you press it, and why the same action gives a clean summary one day and confident nonsense the next.
+
+## What happens when you upload a file
+
+**ChatGPT does not read your document the way a person reads paper. It converts the file into plain text, then treats that text as part of your message. If the text extraction fails or the document is very long, the assistant answers from whatever fragment it received, without telling you what was lost.**
+
+The practical sequence is short. Open a new chat. Click the paperclip or plus icon beside the message box. Pick your file from your computer or phone. Wait for the small file tile to appear above the box. Then type your instruction and send.
+
+The instruction matters more than most people expect. Attaching a file without words is like handing someone a folder and walking away. Say what you want: "Summarize this in five bullet points," or "List every date mentioned," or "Find the section about cancellation and quote it back to me." If you want a fuller method for writing that request, the [beginner's five-part formula for writing AI prompts](/articles/how-to-write-ai-prompts) applies to uploads exactly as it does to typed questions.
+
+## Which file formats work, and which ones fight back
+
+**Anything that stores real characters, such as a Word document, a spreadsheet, a text file, or a PDF made by exporting from software, usually comes through cleanly. Anything that stores a picture of characters, such as a phone photo of an invoice or a fax, has to be read by image recognition first, and that step can fail.**
+
+| File type | What it actually holds | How well it comes through | What to do first |
+|---|---|---|---|
+| .txt, .md | Plain characters | Very reliable | Nothing |
+| .docx (Word) | Characters plus formatting | Reliable | Nothing |
+| .csv, .xlsx | Rows and columns | Usually reliable | Keep one table per sheet |
+| PDF exported from software | Selectable characters | Usually reliable | Check that you can select text |
+| PDF made by a scanner | A picture of a page | Unreliable | Expect errors, verify every number |
+| Photo of a document | A picture | Unreliable | Retype short text instead |
+| .pptx (slides) | Characters in boxes | Mixed | Say which slides matter |
+
+There is a two second test that settles most of this. Open the PDF, try to select a sentence with your cursor, and see whether the text highlights word by word. If it highlights, the document holds real text. If your cursor draws a box over the whole page, you are looking at a picture.
+
+## Why scanned PDFs and long files go wrong
+
+**Two failures cause most bad results. A scanned page holds an image, so the assistant must guess at letters and can invent numbers that were never there. A long document gets cut to fit a size limit, and the answer describes only the part that survived the cut.**
+
+### The scanned page problem
+
+Image recognition is good at clean printed text and poor at handwriting, faint copies, stamps, tables with thin lines, and columns of digits. The failure is quiet. You will not get an error message saying "I could not read row 14." You get a confident summary that includes a figure which does not exist in your file. For anything involving money, dates, or identifiers, treat a scan as a draft to be checked against the original by eye.
+
+### The quiet truncation problem
+
+Every assistant has a limit on how much text it can hold at once. When your file exceeds it, the tool may read only part of the document, or may search inside it and pull selected passages rather than reading it end to end. Neither behavior is announced clearly.
+
+A simple check catches this. Ask a question whose answer sits on the last page: "What is the final sentence of the document?" or "What does the last section say?" If the reply is vague, hedged, or clearly about earlier material, the whole file did not make it in. Split the document into smaller parts and upload them one at a time.
+
+Different tools handle length differently, and the free tiers are usually the most restricted. If you are still deciding which assistant to use, the guide to [free AI models versus assistants](/articles/free-ai-models) explains what changes between them.
+
+## What to remove before a file leaves your computer
+
+**Uploading a file sends it to a company server. Before you upload, remove anything you would not want stored outside your building: full names paired with medical or financial detail, account numbers, card numbers, home addresses, government identifiers, and login credentials. A redacted copy answers the same question with far less exposure.**
+
+Work from a copy, never the original. Save the file with "-redacted" in the name so you never confuse the two.
+
+- Replace real names with Client A, Client B, Patient 1.
+- Delete account, card, policy, and case numbers entirely.
+- Remove addresses, birth dates, and government identifiers.
+- Strip email signatures, which carry direct phone numbers.
+- Check headers, footers, and hidden spreadsheet columns.
+- Delete comments and tracked changes in Word files.
+
+Redaction by black rectangle is not redaction. A drawn box in a PDF sits on top of the text, and the text underneath is still extractable. Delete the characters, then export a fresh copy.
+
+For a plain answer to the question sitting under all of this, read [Is ChatGPT confidential?](/articles/is-chatgpt-confidential) before you upload anything belonging to a client, a patient, or an employer.
+
+## Your first upload: a safe practice exercise
+
+**Practice on a document that would not hurt you if it leaked. A recipe, a public meeting agenda, or an old newsletter works well. The goal is not a useful answer. The goal is learning to tell the difference between an answer built on your file and an answer the assistant invented.**
+
+1. Choose a public document of two to six pages.
+2. Open it and confirm you can select the text with your cursor.
+3. Start a new chat and attach the file.
+4. Ask: "Summarize this document in five bullet points."
+5. Ask: "Quote the first sentence of the document exactly."
+6. Ask: "Quote the last sentence of the document exactly."
+7. Open the original and compare both quotes word for word.
+
+Steps five through seven are the whole lesson. If both quotes match, the file went in intact and you can trust the summary as a starting point. If either is wrong, missing, or paraphrased, you have just seen truncation or extraction failure happen in front of you, on a document where it costs nothing.
+
+Ready to build on this? Work through the [Epiphany Learn modules](/modules/) in order, and use [Plan your first project](/modules/module-6/first-project) when you want to turn this skill into something that saves real time each week.
+
+## When uploading is the wrong move
+
+**Some documents should never be uploaded, no matter how convenient it is. If a file is covered by a client agreement, a health privacy rule, or an employer policy you have not read, the safe answer is to stop and ask. Convenience does not create permission, and an upload cannot be recalled.**
+
+There is also a quieter case. If you need a guaranteed exact answer, such as a total from a spreadsheet or a legal clause repeated verbatim, open the file yourself and read it. An assistant is useful for orientation, summary, and drafting. It is a poor substitute for looking at the number.
+
+## Frequently Asked Questions
+
+### How large a file can I upload?
+
+Limits change by tool and by plan, so I will not quote a figure that may already be wrong. Check your assistant's current help page. The practical rule is more durable: if a document runs past roughly twenty pages, split it and upload the parts separately.
+
+### Does ChatGPT keep my uploaded file?
+
+Uploaded files are processed on company servers and retention depends on the provider, your plan, and your settings. Treat every upload as leaving your control. Redact first, and check the current policy for your account rather than relying on what was true last year.
+
+### Why does the answer describe a document I did not upload?
+
+Usually the text extraction produced very little, so the assistant filled the gap from general knowledge. Ask it to quote a specific sentence from the file. If it cannot, the file was not readable and you should convert or retype it.
+
+### Can I upload a photo of a printed page?
+
+You can, and short clean text often works. Numbers, tables, and handwriting are where it breaks. For anything precise, retyping a few lines is faster than checking a full page of recognition errors.
+
+### Should I upload one big file or several small ones?
+
+Several small ones, organized by topic. Smaller files reduce truncation, and they make it obvious which document an answer came from when you ask a follow-up question.
