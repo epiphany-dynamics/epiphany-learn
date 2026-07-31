@@ -370,6 +370,17 @@
     "imageHeight": 1024,
     "draft": false,
     "updated": null,
-    "networkLinks": []
+    "networkLinks": [
+      {
+        "site": "fss",
+        "title": "Home Health PT Scheduling: Eligibility Automations",
+        "url": "https://fieldservicestack.com/guides/home-health-pt-scheduling-eligibility-automations/"
+      },
+      {
+        "site": "ed",
+        "title": "Best AI Tools for Physical Therapy Practices in 2026",
+        "url": "https://epiphanydynamics.ai/blog/best-ai-tools-for-physical-therapy/"
+      }
+    ]
   }
 ]
