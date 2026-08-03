@@ -1,0 +1,115 @@
+---
+slug: chatgpt-excel-formulas
+title: "ChatGPT Excel formulas: ask well, then check the answer"
+description: Learn how to ask ChatGPT for an Excel formula in plain English, the three details people leave out, and a two-row test to run before you report a number.
+seoTitle: "ChatGPT Excel Formulas: Ask, Then Verify"
+focusKeyword: chatgpt excel formulas
+tags:
+  - chatgpt
+  - excel
+  - spreadsheets
+  - ai for beginners
+  - prompting
+pubDate: "2026-08-03"
+image: /images/articles/chatgpt-excel-formulas.webp
+imageAlt: "ChatGPT Excel formulas: ask well, then check the answer: chatgpt excel formulas"
+imageWidth: 1536
+imageHeight: 1024
+draft: true
+---
+
+**ChatGPT can write a working Excel formula if you tell it three things most people skip: which cells hold the data, what should happen to blank cells, and what should happen when the math fails. Then check the result on two rows you already know the answer to before you report a number.**
+
+## What ChatGPT can and cannot know about your spreadsheet
+
+**ChatGPT does not see your file unless you show it. It knows Excel syntax extremely well and knows nothing about your column layout, your header row, or your blank cells. Every wrong formula you have seen usually comes from that gap, not from the model being bad at math.**
+
+This distinction matters more than it sounds. When you type "sum my overdue invoices," the assistant has to invent a spreadsheet in its head, then write a formula for that imaginary sheet. It will pick something reasonable like `A1:A100`. If your data actually sits in column C and runs to row 340, the formula returns a number, no error appears, and the number is wrong.
+
+That is the real risk with spreadsheets. A broken formula rarely announces itself. It quietly returns something plausible.
+
+You have two ways to close the gap: describe the sheet in words, or show the assistant the file. If you want to try the second route, the walkthrough in [ChatGPT File Upload: A Calm First-Time Walkthrough](/articles/chatgpt-file-upload) covers what happens to your file and how to keep the exercise small.
+
+## The three details people leave out
+
+**Three missing details cause most broken formulas: the exact cell range, the rule for empty cells, and the rule for errors. Say all three in ordinary words and you usually get a formula that runs the first time. Leave them out and you get a guess dressed as an answer.**
+
+| Detail people skip | What ChatGPT assumes without it | What to say instead |
+|---|---|---|
+| Which cells | A generic range like A1:A100 that may miss your newest rows | "The data runs from row 2 to row 200, columns A through D. Row 1 is headers." |
+| Blank cells | That blanks are harmless and can be ignored | "Some amount cells are empty. Treat an empty cell as zero, not as a missing row." |
+| Errors | That nothing will ever divide by zero or find no match | "If no invoice matches the filter, show 0 instead of an error message." |
+
+There is a fourth detail worth adding when it applies: text sitting in a number column. Excel's `SUM` silently skips text. So if someone typed "pending" into an amount cell, your total will be quietly short, and nothing on screen will warn you.
+
+## A request template you can copy
+
+**A good request has five short parts: what the sheet holds, which columns and rows matter, the calculation in plain words, the blank and error rules, and the Excel version you use. Write it as sentences, not keywords. You are describing a job to a careful stranger.**
+
+Here is the shape, filled in with a small invoice example:
+
+> I have an Excel sheet of client invoices. Row 1 is headers. Data runs from row 2 to row 200. Column A is invoice number, column B is client name, column C is amount due, column D is days overdue. I want the total amount due for invoices more than 30 days overdue. Some cells in column C are empty, and I want those counted as zero. If nothing matches, show 0 rather than an error. I am on Microsoft 365 for Windows. Please explain what each part of the formula does.
+
+That last sentence does real work. An explanation you can read is what lets you catch a wrong range before it reaches a report.
+
+For that request, a correct answer looks like `=SUMIFS(C2:C200,D2:D200,">30")`, and for an average where no rows might match, `=IFERROR(AVERAGEIFS(C2:C200,D2:D200,">30"),0)`. If you want to sharpen how you phrase requests generally, [How to write AI prompts: a beginner's five-part formula](/articles/how-to-write-ai-prompts) uses the same structure across other tasks.
+
+## The two-row sanity test before you report a number
+
+**Before a generated formula touches a real report, test it on two rows where you already know the answer: one ordinary row and one awkward row with a blank or a zero. If both match what you worked out by hand, the formula is probably safe. If either fails, stop.**
+
+1. Pick one ordinary row and work out the expected answer on paper or a calculator.
+2. Pick one awkward row: a blank amount, a zero, text where a number belongs, or a date at the edge of your range.
+3. Paste the formula into a scratch cell beside a small copy of just those rows.
+4. Compare both results against your hand answers.
+5. Widen the range to your full data, then compare the total to something you already trust, such as last month's closed report.
+6. Only after those checks pass should the number go into anything another person reads.
+
+The awkward row is the one that catches real mistakes. Ordinary rows almost always work. The blank, the zero, and the stray text are where a formula silently changes meaning.
+
+## A safe practice exercise you can run today
+
+**Practice on a copy of a small sheet, not on the file your team relies on. Build a six row invoice list with one blank amount and one text entry where a number should be. Ask for a formula, then run the two row test. The mistakes are cheap here.**
+
+Build this in a blank workbook, using headers in row 1:
+
+- Row 2: INV-001, Acme, 400, 45
+- Row 3: INV-002, Borden, 250, 12
+- Row 4: INV-003, Cole, (leave blank), 60
+- Row 5: INV-004, Dunn, pending, 90
+- Row 6: INV-005, Ellis, 175, 31
+- Row 7: INV-006, Faber, 0, 33
+
+Work out the right answer first. Invoices over 30 days overdue are rows 2, 4, 5, 6 and 7. Only rows 2, 6 and 7 hold usable numbers, so the total is 575. Now ask ChatGPT for the formula using the template above and see whether it returns 575. If it does, change the text entry to a number and confirm the total moves the way you expect.
+
+You have now done the thing that separates a useful assistant from a risky one: you checked before you trusted. If your sheet holds client names, invoice details, or anything you would not email to a stranger, read [Is ChatGPT Confidential? A Plain-English Answer](/articles/is-chatgpt-confidential) before pasting real data, and practice with made up names instead.
+
+## When a generated formula is the wrong tool
+
+**Skip the generated formula when the number carries legal or financial weight, when the sheet contains customer or patient details you should not paste anywhere, or when you cannot check the answer by hand. A formula you cannot verify is a guess with a nicer font.**
+
+Payroll, tax filings, clinical figures and anything going to a regulator need a human who understands the calculation, not just a formula that runs. The same is true of any calculation so large or tangled that no hand check is possible. In that case the honest move is to simplify the question until you can check part of it, or to ask a person who owns that number.
+
+Ready to put this to work on something real? Start with [Plan your first project](/modules/module-6/first-project) to pick one small, checkable task, or browse the full set of [learning modules](/modules/) to build from the beginning.
+
+## Frequently Asked Questions
+
+### Does ChatGPT need to see my actual spreadsheet file?
+
+No. A clear written description of your columns, rows and rules is usually enough, and it keeps your data private. Uploading helps when the layout is complicated or messy, but it is not required for a straightforward formula.
+
+### Why did the formula run without an error but give the wrong total?
+
+Almost always a range problem or a blank cell rule. The formula covered rows 2 to 100 while your data reaches row 340, or text sat in a number column and got skipped silently. Re-state the exact range and ask again.
+
+### Should I use a paid assistant for spreadsheet work?
+
+Free versions handle common formulas well. The differences show up on long files and complex multi-step logic. [Free AI Models vs Assistants: A Beginner's Pick Guide](/articles/free-ai-models) walks through when paying actually changes what you can do.
+
+### What if I do not understand the formula it gives me?
+
+Ask for a line by line explanation in plain English, then ask what happens if a cell is blank. If the explanation still does not make sense, the formula is too complex for the job and you should ask for a simpler version.
+
+### Can I use this approach for Google Sheets?
+
+Yes, with one change: say "Google Sheets" in your request. Most functions match, but a few differ, and the assistant will pick the wrong syntax if you never name the tool you are using.

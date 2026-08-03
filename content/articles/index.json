@@ -404,5 +404,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "chatgpt-excel-formulas",
+    "title": "ChatGPT Excel formulas: ask well, then check the answer",
+    "description": "Learn how to ask ChatGPT for an Excel formula in plain English, the three details people leave out, and a two-row test to run before you report a number.",
+    "seoTitle": "ChatGPT Excel Formulas: Ask, Then Verify",
+    "focusKeyword": "chatgpt excel formulas",
+    "tags": [
+      "chatgpt",
+      "excel",
+      "spreadsheets",
+      "ai for beginners",
+      "prompting"
+    ],
+    "pubDate": "2026-08-03",
+    "image": "/images/articles/chatgpt-excel-formulas.webp",
+    "imageAlt": "ChatGPT Excel formulas: ask well, then check the answer: chatgpt excel formulas",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
