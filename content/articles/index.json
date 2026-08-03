@@ -111,7 +111,13 @@
     "imageHeight": 1024,
     "draft": false,
     "updated": null,
-    "networkLinks": []
+    "networkLinks": [
+      {
+        "title": "Best AI Models Ranked by Momentum: the July 21, 2026 snapshot",
+        "url": "https://hypebench.buzz/blog/best-ai-models/",
+        "site": "hype"
+      }
+    ]
   },
   {
     "slug": "is-ai-hard-to-learn",
@@ -259,6 +265,11 @@
         "site": "hype",
         "title": "AI Front Desk: Which Models Actually Take the Call",
         "url": "https://hypebench.buzz/blog/ai-front-desk/"
+      },
+      {
+        "title": "AI Front Desk Cost: Pricing, Setup, and How It Works",
+        "url": "https://epiphanydynamics.ai/blog/ai-front-desk-cost-how-it-works/",
+        "site": "ed"
       }
     ]
   },
@@ -380,6 +391,11 @@
         "site": "ed",
         "title": "Best AI Tools for Physical Therapy Practices in 2026",
         "url": "https://epiphanydynamics.ai/blog/best-ai-tools-for-physical-therapy/"
+      },
+      {
+        "title": "Eligibility automation ROI for physical therapy clinics",
+        "url": "https://ai4bizcalculator.online/blog/eligibility-automations-physical-therapy/",
+        "site": "calc"
       }
     ]
   },
@@ -403,7 +419,18 @@
     "imageHeight": 1024,
     "draft": false,
     "updated": null,
-    "networkLinks": []
+    "networkLinks": [
+      {
+        "title": "DeepSeek vs ChatGPT: Two Different Shapes of Attention",
+        "url": "https://hypebench.buzz/blog/deepseek-vs-chatgpt/",
+        "site": "hype"
+      },
+      {
+        "title": "Grok vs ChatGPT: Two Different Ways to Own Attention",
+        "url": "https://hypebench.buzz/blog/grok-vs-chatgpt/",
+        "site": "hype"
+      }
+    ]
   },
   {
     "slug": "chatgpt-excel-formulas",
@@ -425,6 +452,17 @@
     "imageHeight": 1024,
     "draft": false,
     "updated": null,
-    "networkLinks": []
+    "networkLinks": [
+      {
+        "title": "DeepSeek vs ChatGPT: Two Different Shapes of Attention",
+        "url": "https://hypebench.buzz/blog/deepseek-vs-chatgpt/",
+        "site": "hype"
+      },
+      {
+        "title": "Grok vs ChatGPT: Two Different Ways to Own Attention",
+        "url": "https://hypebench.buzz/blog/grok-vs-chatgpt/",
+        "site": "hype"
+      }
+    ]
   }
 ]
