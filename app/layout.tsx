@@ -33,7 +33,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "AI for Everyone — Epiphany Dynamics",
+  title: "Learn AI Free: Bite-Sized Lessons for Work | Epiphany Learn",
   description:
     "Learn AI in bite-sized modules. Cut through the hype and build real skills you can use every day. Free, gamified, no signup required.",
   metadataBase: new URL("https://epiphany.help"),
