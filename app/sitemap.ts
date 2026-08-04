@@ -8,8 +8,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${base}/modules`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/articles`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/dashboard`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
-    { url: `${base}/rewards`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];
 
   const modules = getAllModules();
