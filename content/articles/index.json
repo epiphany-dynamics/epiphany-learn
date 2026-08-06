@@ -508,5 +508,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "tips-for-using-chatgpt",
+    "title": "Tips for using ChatGPT: the settings nobody turns on",
+    "description": "Practical tips for using ChatGPT that are not about prompt wording: when to start a fresh chat, how to check and clear saved memories, and a two-minute setup.",
+    "seoTitle": "Tips for Using ChatGPT Beyond Better Prompts",
+    "focusKeyword": "tips for using chatgpt",
+    "tags": [
+      "chatgpt",
+      "ai for beginners",
+      "chatgpt settings",
+      "ai habits",
+      "non-technical guide"
+    ],
+    "pubDate": "2026-08-06",
+    "image": "/images/articles/tips-for-using-chatgpt.webp",
+    "imageAlt": "Tips for using ChatGPT: the settings nobody turns on: tips for using chatgpt",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
