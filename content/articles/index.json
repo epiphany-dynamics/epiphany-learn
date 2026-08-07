@@ -530,5 +530,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "ai-etiquette",
+    "title": "AI Etiquette: The Unwritten Rules, Answered Plainly",
+    "description": "Concrete AI etiquette rules: when to disclose AI-written work, asking before notetakers join calls, and what to do with obvious AI drafts.",
+    "seoTitle": "AI Etiquette: The Unwritten Rules, Answered",
+    "focusKeyword": "ai etiquette",
+    "tags": [
+      "ai etiquette",
+      "ai disclosure",
+      "workplace ai",
+      "ai notetakers",
+      "beginner ai"
+    ],
+    "pubDate": "2026-08-07",
+    "image": "/images/articles/ai-etiquette.webp",
+    "imageAlt": "AI Etiquette: The Unwritten Rules, Answered Plainly: ai etiquette",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
