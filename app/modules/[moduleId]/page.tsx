@@ -113,7 +113,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const mod = getModule(params.moduleId);
   if (!mod) return {};
-  return { title: `${mod.title} — Epiphany Learn`, description: mod.description };
+  return {
+    title: `${mod.title} — Epiphany Learn`,
+    description: mod.description,
+    alternates: {
+      canonical: `/modules/${params.moduleId}`,
+    },
+  };
 }
 
 export default function ModulePage({ params }: Props) {
