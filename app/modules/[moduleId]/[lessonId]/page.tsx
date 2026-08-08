@@ -22,6 +22,9 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `${lesson.title} — Epiphany Learn`,
     description: lesson.subtitle,
+    alternates: {
+      canonical: `/modules/${params.moduleId}/${params.lessonId}`,
+    },
   };
 }
 

@@ -9,6 +9,9 @@ const MODULE_EMOJIS = ["🧠", "💬", "🛠️", "🛡️", "🛒", "🚀"];
 
 export const metadata = {
   title: "Modules — Epiphany Learn",
+  alternates: {
+    canonical: "/modules",
+  },
 };
 
 export default function ModulesPage() {
