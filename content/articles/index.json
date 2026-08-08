@@ -552,5 +552,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "ai-for-nonprofits",
+    "title": "AI for Nonprofits: What a Small Team Can Safely Hand Off",
+    "description": "A calm guide to AI for nonprofits: which weekly jobs a small team can safely hand off, the two places AI must not go alone, and the donor data line.",
+    "seoTitle": "AI for Nonprofits: What Small Teams Can Hand Off",
+    "focusKeyword": "ai for nonprofits",
+    "tags": [
+      "ai for nonprofits",
+      "nonprofit operations",
+      "grant reporting",
+      "donor privacy",
+      "ai for beginners",
+      "program management"
+    ],
+    "pubDate": "2026-08-08",
+    "image": "/images/articles/ai-for-nonprofits.webp",
+    "imageAlt": "AI for Nonprofits: What a Small Team Can Safely Hand Off: ai for nonprofits",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
