@@ -598,5 +598,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "ai-training-for-employees",
+    "title": "AI training for employees: a four-week plan with no budget",
+    "description": "A four-week AI training plan for managers with no budget: what to teach, the verification habit, the paste rule, and a safe week-one exercise.",
+    "seoTitle": "AI Training for Employees: A Free Four-Week Plan",
+    "focusKeyword": "ai training for employees",
+    "tags": [
+      "ai training",
+      "team management",
+      "ai for beginners",
+      "workplace ai",
+      "prompting"
+    ],
+    "pubDate": "2026-08-11",
+    "image": "/images/articles/ai-training-for-employees.webp",
+    "imageAlt": "AI training for employees: a four-week plan with no budget: ai training for employees",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
