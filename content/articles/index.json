@@ -642,5 +642,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "chatgpt-for-accounting",
+    "title": "ChatGPT for accounting: what goes in, what never does",
+    "description": "How a bookkeeper actually uses ChatGPT for accounting work, what data is safe to paste, and the verification step that must follow every output.",
+    "seoTitle": "ChatGPT for Accounting: Safe Uses and Checks",
+    "focusKeyword": "chatgpt for accounting",
+    "tags": [
+      "chatgpt",
+      "accounting",
+      "bookkeeping",
+      "ai safety",
+      "data privacy",
+      "beginners"
+    ],
+    "pubDate": "2026-08-12",
+    "image": "/images/articles/chatgpt-for-accounting.webp",
+    "imageAlt": "ChatGPT for accounting: what goes in, what never does: chatgpt for accounting",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
