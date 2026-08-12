@@ -620,5 +620,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "ai-replacing-accountants",
+    "title": "Is AI Replacing Accountants? An Honest Task Breakdown",
+    "description": "AI already handles categorization, reconciliation, and anomaly flags well. Here is what it still cannot sign off on, plus a safe exercise to test it.",
+    "seoTitle": "Is AI Replacing Accountants? An Honest Answer",
+    "focusKeyword": "ai replacing accountants",
+    "tags": [
+      "ai and jobs",
+      "accounting",
+      "bookkeeping",
+      "ai for beginners",
+      "automation"
+    ],
+    "pubDate": "2026-08-12",
+    "image": "/images/articles/ai-replacing-accountants.webp",
+    "imageAlt": "Is AI Replacing Accountants? An Honest Task Breakdown: ai replacing accountants",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
