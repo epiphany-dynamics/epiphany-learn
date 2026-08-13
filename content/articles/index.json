@@ -665,5 +665,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "chatgpt-for-customer-service",
+    "title": "ChatGPT for customer service: a safe Tuesday workflow",
+    "description": "How to use ChatGPT for customer service without pasting customer data or inventing policy: a safe Tuesday workflow, an allowed and not allowed table, and where humans take over.",
+    "seoTitle": "ChatGPT for Customer Service: A Safe Workflow",
+    "focusKeyword": "chatgpt for customer service",
+    "tags": [
+      "chatgpt",
+      "customer service",
+      "ai for beginners",
+      "support workflow",
+      "data privacy"
+    ],
+    "pubDate": "2026-08-13",
+    "image": "/images/articles/chatgpt-for-customer-service.webp",
+    "imageAlt": "ChatGPT for customer service: a safe Tuesday workflow: chatgpt for customer service",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
