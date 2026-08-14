@@ -687,5 +687,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "chatgpt-performance-review",
+    "title": "ChatGPT performance review: a five-step evidence-first draft",
+    "description": "A calm, plain-English workflow for using ChatGPT on a performance review: start from dated examples, strip names and pay data, check bias, own every sentence.",
+    "seoTitle": "ChatGPT Performance Review: Evidence-First Draft Steps",
+    "focusKeyword": "chatgpt performance review",
+    "tags": [
+      "chatgpt",
+      "performance reviews",
+      "management",
+      "ai for beginners",
+      "workplace ai",
+      "hr"
+    ],
+    "pubDate": "2026-08-13",
+    "image": "/images/articles/chatgpt-performance-review.webp",
+    "imageAlt": "ChatGPT performance review: a five-step evidence-first draft: chatgpt performance review",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
