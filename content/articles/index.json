@@ -710,5 +710,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "chatgpt-for-executive-assistants",
+    "title": "ChatGPT for executive assistants: a safe, anonymized workflow",
+    "description": "A calm, plain-English guide to using ChatGPT as an executive assistant: agendas, briefing packs, travel summaries, and what must never be pasted in.",
+    "seoTitle": "ChatGPT for Executive Assistants: A Safe Workflow",
+    "focusKeyword": "chatgpt for executive assistants",
+    "tags": [
+      "chatgpt",
+      "executive assistants",
+      "ai for beginners",
+      "confidentiality",
+      "workflows",
+      "productivity"
+    ],
+    "pubDate": "2026-08-15",
+    "image": "/images/articles/chatgpt-for-executive-assistants.webp",
+    "imageAlt": "ChatGPT for executive assistants: a safe, anonymized workflow: chatgpt for executive assistants",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
