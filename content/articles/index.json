@@ -733,5 +733,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "chatgpt-for-recruiting",
+    "title": "ChatGPT for recruiting: draft the words, own the decision",
+    "description": "How to use ChatGPT for recruiting safely: job description cleanup, outreach variants, interview plans, and Boolean search, with humans owning every decision.",
+    "seoTitle": "ChatGPT for Recruiting: Draft Safely, Decide Human",
+    "focusKeyword": "chatgpt for recruiting",
+    "tags": [
+      "chatgpt",
+      "recruiting",
+      "hiring",
+      "ai-safety",
+      "beginners",
+      "hr"
+    ],
+    "pubDate": "2026-08-16",
+    "image": "/images/articles/chatgpt-for-recruiting.webp",
+    "imageAlt": "ChatGPT for recruiting: draft the words, own the decision: chatgpt for recruiting",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
