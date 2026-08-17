@@ -756,5 +756,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "chatgpt-for-project-management",
+    "title": "ChatGPT for project management: build a decision register",
+    "description": "Turn raw meeting notes into a decision, risk, action, and owner register with ChatGPT, then verify every line against the source before it enters your project system.",
+    "seoTitle": "ChatGPT for project management: a safe register",
+    "focusKeyword": "chatgpt for project management",
+    "tags": [
+      "chatgpt",
+      "project management",
+      "meeting notes",
+      "ai for beginners",
+      "decision register",
+      "verification"
+    ],
+    "pubDate": "2026-08-16",
+    "image": "/images/articles/chatgpt-for-project-management.webp",
+    "imageAlt": "ChatGPT for project management: build a decision register: chatgpt for project management",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]

@@ -1,0 +1,137 @@
+---
+slug: chatgpt-for-project-management
+title: "ChatGPT for project management: build a decision register"
+description: Turn raw meeting notes into a decision, risk, action, and owner register with ChatGPT, then verify every line against the source before it enters your project system.
+seoTitle: "ChatGPT for project management: a safe register"
+focusKeyword: chatgpt for project management
+tags:
+  - chatgpt
+  - project management
+  - meeting notes
+  - ai for beginners
+  - decision register
+  - verification
+pubDate: "2026-08-16"
+image: /images/articles/chatgpt-for-project-management.webp
+imageAlt: "ChatGPT for project management: build a decision register: chatgpt for project management"
+imageWidth: 1536
+imageHeight: 1024
+draft: true
+---
+
+**ChatGPT is useful for project management when you treat it as a formatter, not a decision maker. Paste your raw meeting notes and ask it to sort what people actually said into decisions, risks, actions, and owners. Then check every line against the notes before anything reaches your project system.**
+
+## What ChatGPT can and cannot decide for you
+
+**ChatGPT can restructure text you give it. It can group, label, and summarize. It cannot know whether a due date was agreed, whether the team reached consensus, or who owns a task. If that information is not in your notes, the model will produce something plausible and wrong.**
+
+This is the whole risk in one sentence: a made-up owner looks exactly like a real one. There is no font change, no warning label, no hesitation in the wording. A register that says "Owner: Dana, due Friday" reads as fact whether Dana said it out loud or the model filled a blank because the column looked empty. If you want the longer version of why that happens, [our plain-English answer to why ChatGPT gives wrong answers](/articles/why-does-chatgpt-give-wrong-answers) covers the mechanics.
+
+So split your requests into two piles before you start.
+
+| What you ask for | Safe? | Why |
+| --- | --- | --- |
+| Group these notes into decisions, risks, and actions | Yes | Rearranging words that already exist in the source |
+| Pull every sentence that names a person | Yes | Mechanical extraction you can check by eye |
+| Rewrite each line in one clear sentence | Yes | Style change, meaning stays put |
+| Assign an owner to each action | No | Ownership is a commitment a person makes, not a pattern in text |
+| Add due dates where they are missing | No | Invented dates are indistinguishable from real ones |
+| Tell me whether the team agreed | No | The model reads tone, not consensus |
+| Flag every line where the owner or date is missing | Yes | This is the behavior you actually want |
+
+## The four columns of a decision register
+
+**A decision register is a short table that turns a conversation into something a project can run on. Four columns carry the work: decisions, risks, actions, and owners. A fifth column, the source line, is what makes the whole thing checkable later, and it is the one most people skip.**
+
+Here is what each column holds.
+
+1. **Decision.** Something the group settled. "We are launching with the current form and fixing validation after." A decision is closed. If the notes show discussion but no landing point, it is not a decision.
+2. **Risk.** Something that could go wrong and has not yet. "Vendor has not confirmed the API sandbox." Risks are allowed to be vague, because that is their honest state.
+3. **Action.** A specific next step someone does. "Send the revised scope to the vendor." Not "look into the vendor situation."
+4. **Owner.** A named person who said they would do it. Only fill this from the notes. If nobody claimed it, write "unassigned."
+5. **Source line.** The exact words from the notes that produced this row. This is your receipt.
+
+Add one more field that is not a column: an **open questions** list at the bottom. That is where the model puts everything it could not place without guessing. A long open-questions list is not a failure. It is the model telling you what your notes did not capture, which is genuinely useful information about your meeting.
+
+## A safe exercise using a made-up status meeting
+
+**Practice on invented notes first, never on a live project. Write eight lines of fake meeting scrawl, run the prompt below, and compare the output to your fiction line by line. You will see where the model fills gaps, and you will learn to spot that pattern in real work within one sitting.**
+
+Here are the illustrative notes. Nothing here is real, and that is the point.
+
+```
+Website relaunch sync, Tues
+- Priya: homepage copy still in draft, waiting on legal
+- someone asked about the pricing page, no answer
+- agreed we are NOT moving the launch date
+- Marcus mentioned the photographer invoice is unpaid
+- discussed whether to cut the blog section, went in circles
+- Priya said she'd chase legal this week
+- old CMS login is broken, nobody knows who has access
+- pricing page owner? unclear
+```
+
+Now the prompt:
+
+```
+Below are raw notes from one meeting. Sort them into four groups:
+decisions, risks, actions, owners.
+
+Rules:
+- Use only what the notes say. Do not add dates, owners,
+  or outcomes that are not written down.
+- If an owner is not named, write "unassigned".
+- If a due date is not stated, write "no date given".
+- For every row, quote the exact source line it came from.
+- Put anything you could not place, or could not place
+  without guessing, in an "open questions" list at the end.
+
+[paste notes here]
+```
+
+Read the result against the notes. "Went in circles" on the blog section should land in open questions, not decisions. The pricing page owner should read "unassigned." If the model produced a due date for chasing legal, you have just seen the failure mode with your own eyes, on data where it costs nothing. If you prefer working from a file rather than pasting, [our first-time walkthrough of ChatGPT file upload](/articles/chatgpt-file-upload) shows how that changes the workflow.
+
+## The verification pass before the register enters your project system
+
+**Nothing goes into your tracker until you have walked the register back to the notes. Budget five to ten minutes for a normal meeting. You are not re-reading for meaning. You are checking six specific things, and any row that fails one of them gets fixed or deleted, not softened.**
+
+1. **Every owner appears by name in the notes.** If you cannot find the name attached to that task, change it to unassigned.
+2. **Every date appears in the notes.** No date in the source means no date in the register.
+3. **Every decision has a closing line.** Discussion is not a decision. Move it to open questions.
+4. **No row invented a status.** "In progress" and "blocked" are statuses. If nobody said it, it is not there.
+5. **Nothing got dropped.** Skim your notes for anything that appears nowhere in the register.
+6. **Read the open questions out loud.** These are the follow-ups you take back to the team, and they are usually the most valuable output.
+
+This is the same discipline that makes AI drafting safe anywhere a real person's record is involved. The [evidence-first approach in our five-step ChatGPT performance review guide](/articles/chatgpt-performance-review) uses the identical rule: the model arranges evidence you supply and never supplies the evidence itself.
+
+When you are ready to build this into a repeatable habit rather than a one-off trick, work through [plan your first project](/modules/module-6/first-project). It walks through scoping one small, reversible AI workflow end to end, which is exactly the shape of this one.
+
+## When this workflow is the wrong tool
+
+**Skip it when the meeting was short enough to write up by hand, when the notes are too thin to verify against, or when the content is confidential in a way your account terms do not cover. Verification takes real minutes. On a three-line standup, the register costs more than it saves.**
+
+Two other cases deserve a hard stop. First, HR, legal, disciplinary, and contract negotiation notes: the cost of one invented line there is not a corrected ticket, it is a damaged record. Second, notes so fragmentary that you cannot tell what was said, because verification is only possible when there is a source to verify against. If your open-questions list is longer than your register, the honest fix is better note-taking, not a better prompt.
+
+Once this is steady, the natural next step is picking a second workflow with the same risk profile. Browse the [Epiphany Learn modules](/modules/) and choose one where the model formats and you decide.
+
+## Frequently Asked Questions
+
+### Can ChatGPT run my project for me?
+
+No. It can turn what was said into a readable structure, which saves the twenty minutes you normally spend rewriting notes. Decisions, priorities, and assignments stay with people. The model has no view into your team's capacity, politics, or commitments, and it cannot tell the difference between a suggestion and an agreement.
+
+### What if my notes are messy or half-sentences?
+
+Messy is fine. Fragments, abbreviations, and shorthand all work, because the model is pattern-matching on text you wrote. Thin is the real problem. If a line says "pricing thing, follow up" with no name, no register can rescue it. The output will honestly show you unassigned, which tells you what to fix next meeting.
+
+### Is it safe to put meeting notes into ChatGPT?
+
+It depends on the content and your account settings. Internal project logistics are usually low risk. Client names, salary figures, health details, and anything under a confidentiality agreement are not. A simple habit: replace names with initials or role labels before pasting, then restore them in your own document afterward.
+
+### How long should the verification pass take?
+
+For a thirty minute meeting with a page of notes, plan on five to ten minutes. If it consistently takes longer, your prompt is probably allowing too much freedom. Tighten the rules, especially the requirement to quote the exact source line for every row, which makes checking a scan rather than a re-read.
+
+### Do I need a paid plan for this?
+
+No. This works on free tiers because it is a text-restructuring task, not a heavy reasoning one. Paid plans mainly help with longer notes and file handling. Start free, confirm the workflow earns its minutes on your real meetings, and only then consider whether an upgrade changes anything for you.
