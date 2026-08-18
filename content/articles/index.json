@@ -868,5 +868,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "can-my-employer-see-my-chatgpt-history",
+    "title": "Can My Employer See My ChatGPT History? An Honest Answer",
+    "description": "Your employer may see device, network, and workspace admin records of ChatGPT use. Here is what each layer reveals and a safe rule for work data.",
+    "seoTitle": "Can My Employer See My ChatGPT History?",
+    "focusKeyword": "can my employer see my chatgpt history",
+    "tags": [
+      "chatgpt",
+      "workplace-privacy",
+      "ai-at-work",
+      "beginner-guide",
+      "data-safety"
+    ],
+    "pubDate": "2026-08-18",
+    "image": "/images/articles/can-my-employer-see-my-chatgpt-history.webp",
+    "imageAlt": "Can My Employer See My ChatGPT History? An Honest Answer: can my employer see my chatgpt history",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
