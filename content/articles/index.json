@@ -846,5 +846,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "will-ai-replace-bookkeepers",
+    "title": "Will AI Replace Bookkeepers? An Honest Task Breakdown",
+    "description": "AI can code transactions and flag reconciliation gaps, but it cannot defend your audit trail. A calm task-by-task look at what bookkeepers keep in 2026.",
+    "seoTitle": "Will AI Replace Bookkeepers? Honest Task Breakdown",
+    "focusKeyword": "will ai replace bookkeepers",
+    "tags": [
+      "ai-and-jobs",
+      "bookkeeping",
+      "accounting",
+      "beginners",
+      "task-breakdown"
+    ],
+    "pubDate": "2026-08-18",
+    "image": "/images/articles/will-ai-replace-bookkeepers.webp",
+    "imageAlt": "Will AI Replace Bookkeepers? An Honest Task Breakdown: will ai replace bookkeepers",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
