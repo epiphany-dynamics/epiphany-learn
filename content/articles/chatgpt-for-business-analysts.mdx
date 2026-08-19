@@ -1,0 +1,128 @@
+---
+slug: chatgpt-for-business-analysts
+title: "ChatGPT for business analysts: verify every line"
+description: How business analysts can use ChatGPT to structure requirements, extract questions, and draft acceptance criteria without inventing consensus.
+seoTitle: "ChatGPT for Business Analysts: A Safe Workflow"
+focusKeyword: chatgpt for business analysts
+tags:
+  - chatgpt
+  - business analysis
+  - requirements
+  - beginners
+  - workflow
+pubDate: "2026-08-19"
+image: /images/articles/chatgpt-for-business-analysts.webp
+imageAlt: "ChatGPT for business analysts: verify every line: chatgpt for business analysts"
+imageWidth: 1536
+imageHeight: 1024
+draft: true
+---
+
+**ChatGPT is useful to a business analyst as a structuring tool, not a source of truth. It can reshape messy notes into numbered requirements, surface the questions you forgot to ask, and draft acceptance criteria. It must never invent a requirement or a consensus. You verify every line against the source.**
+
+Business analysis is mostly reading, asking, and writing things down precisely. A language model is genuinely fast at the writing-things-down-precisely part. It is unreliable at knowing what was actually said in a room it was not in. The whole workflow below is built around that split.
+
+## What ChatGPT actually does for a business analyst
+
+**The model is good at four jobs: restructuring text you paste in, listing the gaps and questions inside it, comparing two documents you provide, and drafting first-pass acceptance criteria. Every one of those starts from material you supply. None of them involves the model knowing anything about your project.**
+
+Notice what is missing from that list. It does not decide priority. It does not resolve a disagreement between operations and finance. It does not know that the March scope change was never approved. Those are yours, and they are the reason the role exists.
+
+A useful mental frame: treat the model like a fast, literal-minded junior who has read exactly the page you handed them and nothing else. Handed a clean page, they are helpful. Handed a vague question, they will produce a confident answer built from nothing.
+
+## The one rule: no invented requirements, no invented consensus
+
+**A language model fills gaps smoothly, which is exactly the failure mode analysts cannot afford. If two stakeholders disagree, it will often produce a tidy sentence that hides the conflict. Tell it plainly to mark anything not stated in the source, and then check that it did.**
+
+Two instructions do most of the work here. Put them at the top of every prompt:
+
+1. Use only the text I provide. Do not add requirements, systems, thresholds, or assumptions that are not written in it.
+2. Where the source is unclear, incomplete, or contradictory, write UNCLEAR and quote the exact line that caused the doubt.
+
+Then run a four-step verification pass on whatever comes back:
+
+1. **Trace each line.** For every requirement in the output, find the sentence in your notes that produced it. No source sentence means delete it.
+2. **Hunt for smoothing.** Look for words like "should," "typically," "standard," or "best practice." Those are usually the model's contribution, not your stakeholder's.
+3. **Check the conflicts survived.** If your notes contained a disagreement and the output reads as settled, the model buried it. Put it back.
+4. **Read the whole thing cold.** Not as an editor. As the person who has to defend it in a review.
+
+If this sounds tedious, it is roughly the same effort as proofreading a colleague's draft, and it is what makes the output yours. The plain-English explanation in [Why Does ChatGPT Give Wrong Answers?](/articles/why-does-chatgpt-give-wrong-answers) is worth reading once before you rely on any of this, because the failure is structural rather than occasional.
+
+## A safe first exercise: one meeting note, three outputs
+
+**Use a fake project so nothing confidential leaves your machine. Write eight lines of made-up meeting notes about a request that never existed, then run three passes over them: extract statements, extract open questions, and flag anything the notes do not actually say. Fifteen minutes, no risk.**
+
+Here is a sample you can copy. Invent a fictional company, then type notes like these:
+
+> Ops lead wants the weekly stock report to run automatically. Says Tuesday morning is fine. Finance rep says it has to reconcile against the invoice system first. Ops lead says that has never been a requirement before. Nobody confirmed who owns the invoice system. Warehouse manager was not in the meeting. Someone mentioned a compliance review but did not say which one.
+
+Now run three prompts, one at a time:
+
+**Pass one, statements.** "From the notes below, list only statements that were actually made, with the speaker attached. Do not interpret. Do not combine."
+
+**Pass two, questions.** "From the same notes, list the questions an analyst still needs answered before writing requirements. Group them by who would answer each one."
+
+**Pass three, gaps.** "List what these notes do not tell us. Include anyone absent from the discussion and any term used without a definition."
+
+Compare the three outputs to your original eight lines. You will usually find one invented detail, and finding it yourself is the point of the exercise. Doing this on fiction first means the one time it fabricates something, it costs you nothing.
+
+Before you graduate to real documents, settle the privacy question honestly. [Can My Employer See My ChatGPT History?](/articles/can-my-employer-see-my-chatgpt-history) walks through what is visible on personal versus company accounts, and if you plan to attach requirement documents rather than paste text, [the ChatGPT file upload walkthrough](/articles/chatgpt-file-upload) covers what actually happens to a file you attach.
+
+## Comparing two stakeholder notes without merging them
+
+**Paste both sets of notes with clear labels and ask for a three-column output: what both sources say, what only one says, and where they conflict. The value is in the last two columns. Reject any summary that blends the sources into a single agreed position you never witnessed.**
+
+A comparison table like this is the deliverable, not a paragraph:
+
+| Statement | Ops interview | Finance interview | Status |
+|---|---|---|---|
+| Report runs weekly | Stated | Stated | Agreed |
+| Tuesday delivery | Stated | Not mentioned | Unconfirmed by finance |
+| Must reconcile to invoices | Not mentioned | Stated as mandatory | Conflict, unresolved |
+| Invoice system owner | Not stated | Not stated | Open question |
+
+The word "Agreed" in that table means both sources said it, not that the organization has decided anything. Keep that distinction visible in the document itself, because the reader six weeks from now will not remember it. Analysts who already keep a running log of decisions and their owners will recognize the pattern; the same discipline applied to project work is laid out in [ChatGPT for project management: build a decision register](/articles/chatgpt-for-project-management).
+
+## Drafting acceptance criteria you can defend
+
+**Acceptance criteria are where drafting help pays off most, because the format is repetitive and the content comes from you. Give the model one requirement, the known constraints, and the format you use. Then delete every criterion that references a rule, threshold, or system nobody actually specified.**
+
+Work one requirement at a time. Batching ten requirements into one prompt produces plausible filler for the nine you were not thinking about.
+
+A prompt shape that behaves well:
+
+> Requirement: [one sentence, in your words]. Known constraints: [list what was actually stated]. Write acceptance criteria in Given/When/Then format. Only use the constraints I listed. Where a criterion would need information I have not given you, write it as an open question instead.
+
+That last clause is the one that matters. It gives the model somewhere to put its uncertainty other than into a fabricated number. Expect a handful of open questions back on a genuinely underspecified requirement, which is a signal, not a failure.
+
+Ready to turn this into a habit rather than a one-off experiment? Work through [Plan your first project](/modules/module-6/first-project), which walks you through scoping a small piece of work end to end so the AI assistance sits inside a process you already control.
+
+## When not to use it
+
+**Skip the model when the source material is confidential and your workplace has no approved tool, when the decision is contested and the record matters legally, and when you have not yet read the source yourself. A summary of a document you never opened is not analysis, it is guessing with better grammar.**
+
+There is also a quieter risk. Requirements written in smooth model prose read as more settled than they are. Reviewers approve confident-sounding documents faster. If you use this workflow, keep your UNCLEAR markers and open questions visible in the final draft rather than polishing them away.
+
+## Frequently Asked Questions
+
+### Can I paste real stakeholder notes into ChatGPT?
+
+Only if your organization permits it and you are using an approved account. Many companies allow it on a business plan and forbid it on personal accounts. Check your policy first, and when in doubt, replace names, client identifiers, and dollar figures with placeholders before pasting.
+
+### Will it write requirements from scratch if I describe the project?
+
+It will produce something, and that something will be generic industry filler dressed up as your requirements. Anything not traceable to an interview, a document, or an observed process is invented. Use it to reshape material you gathered, never to substitute for gathering it.
+
+### How do I stop it from inventing consensus between stakeholders?
+
+Label each source explicitly in your prompt, ask for a per-source comparison rather than a summary, and require it to mark conflicts as conflicts. Then check the output against your notes. If a disagreement you remember has disappeared, the model smoothed it over.
+
+### Is it any good at estimating or sizing work?
+
+No. Sizing depends on your team's velocity, your codebase, and your organization's approval overhead, none of which the model can see. It can format an estimate you produced. It cannot produce one.
+
+### What about spreadsheets full of requirement data?
+
+That is a different skill. Ask for the formula and then test it on a few rows you can verify by hand, following the approach in [ChatGPT Excel formulas: ask well, then check the answer](/articles/chatgpt-excel-formulas).
+
+Start with the fictional meeting notes this week. Once the verification pass feels automatic rather than effortful, move it onto one small real requirement and keep the checklist beside you.

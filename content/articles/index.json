@@ -890,5 +890,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "chatgpt-for-business-analysts",
+    "title": "ChatGPT for business analysts: verify every line",
+    "description": "How business analysts can use ChatGPT to structure requirements, extract questions, and draft acceptance criteria without inventing consensus.",
+    "seoTitle": "ChatGPT for Business Analysts: A Safe Workflow",
+    "focusKeyword": "chatgpt for business analysts",
+    "tags": [
+      "chatgpt",
+      "business analysis",
+      "requirements",
+      "beginners",
+      "workflow"
+    ],
+    "pubDate": "2026-08-19",
+    "image": "/images/articles/chatgpt-for-business-analysts.webp",
+    "imageAlt": "ChatGPT for business analysts: verify every line: chatgpt for business analysts",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
