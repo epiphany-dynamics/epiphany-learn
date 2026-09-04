@@ -14,7 +14,7 @@ function escapeXml(value: string): string {
 }
 
 export function GET() {
-  const articles = getAllArticles();
+  const articles = getAllArticles().filter((a) => !a.noindex);
   const items = articles
     .map((article) => {
       const url = `${SITE_URL}/articles/${article.slug}`;

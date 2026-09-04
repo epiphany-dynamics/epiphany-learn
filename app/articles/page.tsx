@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function ArticlesPage() {
-  const articles = getAllArticles();
+  const articles = getAllArticles().filter((a) => !a.noindex);
 
   return (
     <main className="min-h-screen px-6 py-16 max-w-4xl mx-auto">

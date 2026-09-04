@@ -115,6 +115,7 @@ export interface ArticleMeta {
   imageWidth?: number | null
   imageHeight?: number | null
   draft: boolean
+  noindex?: boolean
   networkLinks?: { title: string; url: string; site: NetworkSiteId }[]
 }
 
