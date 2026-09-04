@@ -22,6 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${article.seoTitle} - Epiphany Learn`,
     description: article.description,
+    robots: article.noindex
+      ? { index: false, follow: false, googleBot: { index: false, follow: false } }
+      : undefined,
     alternates: {
       canonical: `/articles/${article.slug}`,
       types: { "application/rss+xml": "/rss.xml" },

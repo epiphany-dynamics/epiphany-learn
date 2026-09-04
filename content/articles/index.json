@@ -359,7 +359,8 @@
         "title": "Best AI Tools for Physical Therapy Practices in 2026",
         "url": "https://epiphanydynamics.ai/blog/best-ai-tools-for-physical-therapy/"
       }
-    ]
+    ],
+    "noindex": true
   },
   {
     "slug": "eligibility-automations-physical-therapy-getting-started",
@@ -397,7 +398,8 @@
         "url": "https://ai4bizcalculator.online/blog/eligibility-automations-physical-therapy/",
         "site": "calc"
       }
-    ]
+    ],
+    "noindex": true
   },
   {
     "slug": "chatgpt-file-upload",

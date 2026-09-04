@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const articleRoutes: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
+  const articleRoutes: MetadataRoute.Sitemap = getAllArticles().filter((a) => !a.noindex).map((a) => ({
     url: `${base}/articles/${a.slug}`,
     lastModified: new Date(a.updated || a.pubDate),
     changeFrequency: "weekly" as const,
