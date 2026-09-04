@@ -14,6 +14,15 @@ const nextConfig = {
   async headers() {
     return [
       {
+        // Static SEO files must stay fetchable by Googlebot. If middleware is
+        // added later, exclude /sitemap.xml, /robots.txt, and *.xml from the matcher.
+        source: '/sitemap.xml',
+        headers: [
+          { key: 'Content-Type', value: 'application/xml; charset=utf-8' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+        ],
+      },
+      {
         source: '/(.*)',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },

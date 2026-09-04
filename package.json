@@ -8,8 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prebuild": "node scripts/gen-llms-txt.mjs",
-    "gen:llms": "node scripts/gen-llms-txt.mjs"
+    "test": "node --test --experimental-strip-types tests/*.test.ts tests/*.test.mjs",
+    "prebuild": "node scripts/gen-llms-txt.mjs && node scripts/gen-sitemap.mjs",
+    "gen:llms": "node scripts/gen-llms-txt.mjs",
+    "gen:sitemap": "node scripts/gen-sitemap.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
