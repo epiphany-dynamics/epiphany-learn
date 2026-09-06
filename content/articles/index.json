@@ -1253,5 +1253,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "how-to-use-chatgpt-for-excel",
+    "title": "How to Use ChatGPT for Excel: Ask in Plain English, Then Check",
+    "description": "Learn how to use ChatGPT for Excel by describing formulas in plain English, handling cell references, blanks, and errors, and running a two-row sanity check first.",
+    "seoTitle": "How to Use ChatGPT for Excel: Plain-English Formulas",
+    "focusKeyword": "how to use chatgpt for excel",
+    "tags": [
+      "chatgpt",
+      "excel",
+      "formulas",
+      "beginner ai",
+      "spreadsheets",
+      "plain english prompts"
+    ],
+    "pubDate": "2026-09-05",
+    "image": "/images/articles/how-to-use-chatgpt-for-excel.webp",
+    "imageAlt": "How to Use ChatGPT for Excel: Ask in Plain English, Then Check: how to use chatgpt for excel",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
