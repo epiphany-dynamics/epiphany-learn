@@ -1321,5 +1321,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "how-to-fact-check-chatgpt",
+    "title": "How to Fact Check ChatGPT: A Beginner's Five-Step Method",
+    "description": "Learn how to fact check ChatGPT with a five-step method, a safe practice exercise, and a risk table so you know which answers need a second source before use.",
+    "seoTitle": "How to Fact Check ChatGPT: A 5-Step Beginner Method",
+    "focusKeyword": "how to fact check ChatGPT",
+    "tags": [
+      "ChatGPT",
+      "fact checking",
+      "AI for beginners",
+      "AI accuracy",
+      "verification",
+      "beginner guides"
+    ],
+    "pubDate": "2026-09-08",
+    "image": "/images/articles/how-to-fact-check-chatgpt.webp",
+    "imageAlt": "How to Fact Check ChatGPT: A Beginner's Five-Step Method: how to fact check ChatGPT",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
