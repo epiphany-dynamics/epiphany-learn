@@ -1367,5 +1367,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "what-not-to-share-with-chatgpt-at-work",
+    "title": "What Not to Share with ChatGPT at Work: A Do-Not-Paste List",
+    "description": "A plain-English do-not-paste list for using ChatGPT at work: customer data, credentials, unpublished numbers, personnel files, plus a safe exercise to practice with.",
+    "seoTitle": "What Not to Share with ChatGPT at Work: Do-Not-Paste List",
+    "focusKeyword": "what not to share with chatgpt at work",
+    "tags": [
+      "chatgpt at work",
+      "ai privacy",
+      "data security",
+      "workplace ai",
+      "chatgpt safety",
+      "beginner ai"
+    ],
+    "pubDate": "2026-09-10",
+    "image": "/images/articles/what-not-to-share-with-chatgpt-at-work.webp",
+    "imageAlt": "What Not to Share with ChatGPT at Work: A Do-Not-Paste List: what not to share with chatgpt at work",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
