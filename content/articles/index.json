@@ -1390,5 +1390,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "can-chatgpt-get-you-fired",
+    "title": "Can ChatGPT Get You Fired? The Real Risks, Explained Plainly",
+    "description": "ChatGPT itself rarely gets anyone fired. Policy violations, leaked confidential data, and fabricated work do. Learn the three real risks and how to avoid each one.",
+    "seoTitle": "Can ChatGPT Get You Fired? The Real Risks Explained",
+    "focusKeyword": "can ChatGPT get you fired",
+    "tags": [
+      "ChatGPT at work",
+      "AI policy",
+      "workplace AI",
+      "confidentiality",
+      "AI for beginners"
+    ],
+    "pubDate": "2026-09-11",
+    "image": "/images/articles/can-chatgpt-get-you-fired.webp",
+    "imageAlt": "Can ChatGPT Get You Fired? The Real Risks, Explained Plainly: can ChatGPT get you fired",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
