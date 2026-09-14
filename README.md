@@ -1,64 +1,27 @@
 # Epiphany Learn
 
-**AI education for people who aren't engineers.** Seven gamified modules, roughly 30 minutes each, that explain what AI actually is and how to use it. No jargon, no hype, no prerequisites.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Live at **[epiphany.help](https://epiphany.help)**.
+A free, gamified course that explains what AI is and how to use it, in seven short modules with quizzes, XP, badges, and a certificate.
 
-Built by [Epiphany Dynamics](https://epiphanydynamics.ai).
+Live at [epiphany.help](https://epiphany.help). Built by [Epiphany Dynamics](https://epiphanydynamics.ai).
 
----
+## Why this exists
 
-## What it is
+Most AI education assumes the reader already understands AI, which leaves the business owner and the curious skeptic without a starting point. This course is written for people who are not engineers, so a reader can finish a module in one sitting and use something from it the same day.
 
-Most AI education is written for people who already understand AI. Epiphany Learn is written for everyone else: the business owner deciding whether to buy an AI tool, the person who keeps hearing that AI will take their job, the curious skeptic who wants a straight answer.
+## Quickstart
 
-Each module is a set of short lessons followed by a quiz. You earn XP for correct answers, unlock badges as you finish modules, and get a certificate at the end. Progress is saved as you go.
-
-## Curriculum
-
-| # | Module | What you learn | Lessons | Time |
-|---|--------|----------------|---------|------|
-| 1 | **What AI Actually Is** | Cut through the hype and understand what's really going on | 4 | 30 min |
-| 2 | **Talking to AI** | How to actually get good results from ChatGPT, Claude, and friends | 5 | 35 min |
-| 3 | **AI in Your Everyday Life** | Real ways AI can save you time starting today | 4 | 30 min |
-| 4 | **Staying Safe and Smart with AI** | What you need to know to protect yourself | 4 | 32 min |
-| 5 | **Evaluating AI Tools and Vendors** | Make smarter buying decisions before you spend a dollar | 4 | 32 min |
-| 6 | **Try It Yourself** | Your personal AI experiment, start small and see results | 4 | 32 min |
-| 7 | **AI Anxiety Is Normal** | What's really happening and what you can actually do about it | 4 | 30 min |
-
-**29 lessons, about 3 hours 40 minutes total.**
-
-## How it works
-
-- **Lessons** are MDX files under `content/module-N/`, each with frontmatter declaring `estimatedMinutes` and `xpReward`.
-- **Progress** is tracked in `localStorage` by default, so the site works with no account and no sign-up.
-- **Optional sign-in** (Firebase Auth) syncs that progress to Firestore so it follows you across devices.
-- **Gamification** covers XP, badges, module-completion celebrations, and a downloadable certificate.
-
-## Tech stack
-
-| | |
-|---|---|
-| Framework | [Next.js 14](https://nextjs.org) (App Router) |
-| Language | TypeScript |
-| Content | MDX via `@next/mdx`, with `remark-gfm` and `remark-frontmatter` |
-| Styling | Tailwind CSS |
-| Animation | Framer Motion |
-| Auth and sync | Firebase Auth + Firestore (optional, progress works without it) |
-| Hosting | Vercel |
-
-## Local development
-
-Requires **Node 22** and **pnpm 9**.
+Requires Node 22 and pnpm.
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open <http://localhost:3000> and start module 1. Progress is stored in `localStorage`, so a lesson and its quiz work with no account and no sign up, and the first completed lesson lands within a minute or two.
 
-Set the six Firebase variables in `.env.local` before running `pnpm build`. Several pages initialize Firebase and are prerendered at build time, so the production build fails with `auth/invalid-api-key` if they are missing:
+Sign in is optional and only carries progress between devices. Firebase is initialized at import time in `lib/firebase.ts`, so a production build needs the six variables below in `.env.local`:
 
 ```bash
 NEXT_PUBLIC_FIREBASE_API_KEY=
@@ -69,39 +32,46 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
 NEXT_PUBLIC_FIREBASE_APP_ID=
 ```
 
-These configure sign-in and cross-device sync only. A reader never has to create an account: lesson progress is kept in `localStorage`, and signing in just carries that progress between devices.
-
 Other commands:
 
+| Command | Action |
+| --- | --- |
+| `pnpm build` | Production build. `prebuild` regenerates `public/llms.txt` and the sitemap. |
+| `pnpm start` | Serve the production build. |
+| `pnpm test` | Run the Node test suites. |
+| `pnpm gen:sitemap` | Regenerate `public/sitemap.xml` on its own. |
+| `pnpm lint` | ESLint. |
+
+## How it works
+
+The app is a Next.js App Router site. Course material is markdown, and progress lives in the browser until a reader chooses to sync it.
+
+- `app/modules/[moduleId]/[lessonId]/page.tsx` renders one lesson, `app/modules/page.tsx` lists the modules, and `app/dashboard`, `app/rewards`, and `app/articles` cover progress, badges, and written articles.
+- Lessons are MDX under `content/module-N/` with frontmatter for `estimatedMinutes` and `xpReward`, and `content/module-N/index.json` holds that module's title, description, badge, and lesson list. There are 29 lessons across the 7 modules.
+- `lib/content.ts` reads those files with gray-matter, so adding a lesson file is enough for it to appear with no registry to edit.
+- `lib/progress.ts` keeps lesson and module progress in `localStorage` under `epiphany_learn_progress`, and `lib/achievements.ts` plus `lib/rewards.ts` derive badges and XP from it.
+- `lib/firebase.ts` and `lib/sync.ts` move that local progress into Firestore when a reader signs in. Interactive lesson pieces such as quizzes and drag and drop exercises are MDX components under `components/mdx`.
+
+The 58 written articles live in `content/articles`, and `scripts/gen-llms-txt.mjs` and `scripts/gen-sitemap.mjs` run on every build to publish `public/llms.txt` and a static `public/sitemap.xml`.
+
+## Tests
+
 ```bash
-pnpm build   # production build
-pnpm start   # serve the production build
-pnpm lint    # eslint
+pnpm test
 ```
 
-## Project structure
+This runs the Node test runner over `tests/*.test.ts` and `tests/*.test.mjs`. Four tests pass on Node 26: three cover the FAQ JSON-LD builder that the article pages emit, and one generates the sitemap and checks it is a well formed `urlset` containing the indexed article and lesson URLs.
 
-```
-app/         Next.js App Router pages (modules, dashboard, rewards)
-components/  UI, lesson, quiz, gamification, auth, nav
-content/     Lesson content as MDX, one directory per module
-lib/         Progress tracking, Firebase sync, achievements, design tokens
-public/      Images and static assets
-```
+The sitemap test regenerates `public/sitemap.xml`, so expect that file to show as modified in `git status` after a test run.
 
-## Deployment
+## Roadmap and known limits
 
-Pushes to `main` build and deploy to production via `.github/workflows/vercel-deploy.yml`, followed by an IndexNow ping to Bing and Yandex.
+- Firebase is needed for sign in and cross device sync only. A reader without an account keeps progress in one browser and loses it if local storage is cleared.
+- Running the test suite rewrites the tracked `public/sitemap.xml` file.
+- Course content is not under the code license. See below.
 
 ## License
 
-This project has two sets of terms.
+Source code is MIT (see [LICENSE](LICENSE)). That covers the interface assets the app needs to run, including fonts, icons, badge and reward art, and module cover art.
 
-- **Source code** is licensed under the [MIT License](LICENSE). Use it, fork it, build on it. This includes the interface assets the app needs to run (fonts, icons, badge and reward art, module cover art).
-- **Course content** is copyright 2026 Epiphany Dynamics LLC, all rights reserved. This is the lessons under `content/`, the lesson images under `public/images/generated/`, and the downloadable materials under `public/downloads/`. You may read and learn from it, but not copy, redistribute, republish, or reuse it to build a competing course.
-
-The exact boundary and full terms are in [CONTENT_LICENSE.md](CONTENT_LICENSE.md).
-
----
-
-Built by [Epiphany Dynamics](https://epiphanydynamics.ai).
+Course content is copyright 2026 Epiphany Dynamics LLC, all rights reserved. That covers the lessons under `content/`, the lesson images under `public/images/generated/`, and the downloadable materials under `public/downloads/`. The boundary and full terms are in [CONTENT_LICENSE.md](CONTENT_LICENSE.md).
