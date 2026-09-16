@@ -1434,5 +1434,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "is-it-cheating-to-use-chatgpt-at-work",
+    "title": "Is It Cheating to Use ChatGPT at Work? A Calm Answer",
+    "description": "Using ChatGPT at work isn't cheating by default. Learn what actually causes trouble: no disclosure, no verification, or confidential data.",
+    "seoTitle": "Is It Cheating to Use ChatGPT at Work?",
+    "focusKeyword": "is it cheating to use ChatGPT at work",
+    "tags": [
+      "ChatGPT at work",
+      "AI ethics",
+      "workplace AI use",
+      "AI disclosure",
+      "AI verification"
+    ],
+    "pubDate": "2026-09-16",
+    "image": "/images/articles/is-it-cheating-to-use-chatgpt-at-work.webp",
+    "imageAlt": "Is It Cheating to Use ChatGPT at Work? A Calm Answer: is it cheating to use ChatGPT at work",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
