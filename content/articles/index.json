@@ -1456,5 +1456,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "should-i-disclose-ai-use-to-a-client",
+    "title": "Should I Disclose AI Use to a Client? A Calm, Honest Answer",
+    "description": "Learn when to disclose AI use to a client, what the data boundary really protects, and a five-step exercise to check risk before your next deliverable.",
+    "seoTitle": "Should I Disclose AI Use to a Client? Plain Answer",
+    "focusKeyword": "should I disclose AI use to a client",
+    "tags": [
+      "AI disclosure",
+      "client work",
+      "freelancing",
+      "data privacy",
+      "AI ethics",
+      "ChatGPT for work"
+    ],
+    "pubDate": "2026-09-16",
+    "image": "/images/articles/should-i-disclose-ai-use-to-a-client.webp",
+    "imageAlt": "Should I Disclose AI Use to a Client? A Calm, Honest Answer: should I disclose AI use to a client",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
