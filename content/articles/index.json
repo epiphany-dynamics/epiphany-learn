@@ -1479,5 +1479,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "how-to-use-chatgpt-without-leaking-company-data",
+    "title": "How to Use ChatGPT Without Leaking Company Data",
+    "description": "Learn to anonymize sensitive details before using ChatGPT, then verify outputs, with a practice exercise and checklist to avoid leaking company data at work.",
+    "seoTitle": "Use ChatGPT Without Leaking Company Data",
+    "focusKeyword": "how to use ChatGPT without leaking company data",
+    "tags": [
+      "ChatGPT at work",
+      "data privacy",
+      "AI safety",
+      "workplace AI",
+      "ChatGPT confidentiality"
+    ],
+    "pubDate": "2026-09-18",
+    "image": "/images/articles/how-to-use-chatgpt-without-leaking-company-data.webp",
+    "imageAlt": "How to Use ChatGPT Without Leaking Company Data: how to use ChatGPT without leaking company data",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
