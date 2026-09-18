@@ -2,9 +2,28 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllModules } from "@/lib/content";
 import { getModuleColor } from "@/lib/module-colors";
+import { HubFAQ } from "@/components/HubFAQ";
 // Module cover images are now generated PNGs at /images/generated/module-{N}-cover.png
 
 const KAHOOT_SHAPES = ["▲", "◆", "●", "■", "★", "⬟"];
+
+const HUB_FAQ = [
+  {
+    question: "What will I learn on Epiphany Learn?",
+    answer:
+      "How AI actually works, what it can and can't do, how to talk to AI tools, how to stay safe with them, and how to lead your first AI project — in plain language, for regular people.",
+  },
+  {
+    question: "How long does it take?",
+    answer:
+      "Each lesson takes just a few minutes, and a whole module fits in about half an hour. You can stop and pick back up whenever you like.",
+  },
+  {
+    question: "Do I need to be technical?",
+    answer:
+      "No. Epiphany Learn is built for everyone — no coding, no jargon, no signup, and it's completely free.",
+  },
+];
 
 const MODULE_EMOJIS = ["🧠", "💬", "🛠️", "🛡️", "🛒", "🚀"];
 
@@ -737,6 +756,7 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+      <HubFAQ items={HUB_FAQ} />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllArticles } from "@/lib/content";
+import { HubFAQ } from "@/components/HubFAQ";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,6 +15,24 @@ export const metadata: Metadata = {
 
 export default function ArticlesPage() {
   const articles = getAllArticles().filter((a) => !a.noindex);
+
+  const faqItems = [
+    {
+      question: "What will I find in the articles?",
+      answer:
+        "Practical, plain-language guides on using AI to work smarter, learn faster, and grow your career.",
+    },
+    {
+      question: "Are the articles different from the modules?",
+      answer:
+        "Yes. The modules are a structured course with quizzes and progress tracking; the articles are standalone guides you can read in any order.",
+    },
+    {
+      question: "Do I need to be technical to read them?",
+      answer:
+        "No. Everything on Epiphany Learn is written for non-technical readers.",
+    },
+  ];
 
   return (
     <main className="min-h-screen px-6 py-16 max-w-4xl mx-auto">
@@ -59,6 +78,7 @@ export default function ArticlesPage() {
       ) : (
         <p className="text-white/60">Articles coming soon.</p>
       )}
+      <HubFAQ items={faqItems} />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllModules } from "@/lib/content";
+import { HubFAQ } from "@/components/HubFAQ";
 import { getModuleColor } from "@/lib/module-colors";
 // Module cover images are now generated PNGs at /images/generated/module-{N}-cover.png
 
@@ -19,6 +20,22 @@ export default function ModulesPage() {
   const totalLessons = modules.reduce((a, m) => a + m.lessons.length, 0);
   const totalMinutes = modules.reduce((a, m) => a + m.estimatedMinutes, 0);
   const totalXP = modules.reduce((a, m) => a + m.xpReward, 0);
+
+  const faqItems = [
+    {
+      question: "What will I learn in the modules?",
+      answer: `The modules walk you from what AI actually is, to talking to AI and using it in everyday life, to staying safe, evaluating AI tools, and leading your first AI project — ${totalLessons} lessons across ${modules.length} modules.`,
+    },
+    {
+      question: "How long does it take to finish all the modules?",
+      answer: `About ${totalMinutes} minutes of reading in total, split into short lessons of a few minutes each. You can start anywhere and go at your own pace.`,
+    },
+    {
+      question: "Do I need to be technical to take the modules?",
+      answer:
+        "No. Every module is written in plain language for non-technical readers — no coding, no math, no jargon.",
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-[var(--bg-page)]">
@@ -241,6 +258,7 @@ export default function ModulesPage() {
           </Link>
         </div>
       </section>
+      <HubFAQ items={faqItems} />
     </main>
   );
 }

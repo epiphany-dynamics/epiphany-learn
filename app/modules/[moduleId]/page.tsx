@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllModules, getModule } from "@/lib/content";
 import { getModuleColor, getModuleColorVars } from "@/lib/module-colors";
+import { HubFAQ, type HubFAQItem } from "@/components/HubFAQ";
 // Module cover images are now generated PNGs at /images/generated/module-{N}-cover.png
 
 const KAHOOT_SHAPES = ["▲", "◆", "●", "■", "★", "⬟"];
@@ -129,6 +130,45 @@ export default function ModulePage({ params }: Props) {
   const firstLesson = mod.lessons[0];
   const color = getModuleColor(params.moduleId);
   const colorVars = getModuleColorVars(params.moduleId);
+
+  const faqItems: HubFAQItem[] =
+    params.moduleId === "module-7"
+      ? [
+          {
+            question: "What will I learn in Module 7?",
+            answer:
+              "The real numbers behind AI anxiety, why so many AI projects fail, what AI is genuinely bad at, and a practical framework for deciding what to trust.",
+          },
+          {
+            question: "Why do so many AI projects fail?",
+            answer:
+              "Not because the technology is broken. Gartner found 85% of enterprise AI projects fail to deliver expected value, and RAND found large-scale AI projects fail far more often than traditional IT projects — usually because of hype-driven expectations and vague success criteria.",
+            linkLabel: "Read: Why 85% of AI Projects Fail",
+            linkHref: "/modules/module-7/why-ai-projects-fail",
+          },
+          {
+            question: "What are my rights when a company uses AI to make a decision about me?",
+            answer:
+              "You have the right to know when AI is being used, understand how it reached its conclusion, challenge the decision and get a human review, opt out when possible, control your data, and hold someone accountable when AI causes harm.",
+            linkLabel: "Read: Your AI Bill of Rights",
+            linkHref: "/modules/module-7/your-ai-bill-of-rights",
+          },
+        ]
+      : [
+          {
+            question: `What will I learn in ${mod.title}?`,
+            answer: mod.description,
+          },
+          {
+            question: `How long does ${mod.title} take to complete?`,
+            answer: `${mod.lessons.length} short lessons, about ${mod.estimatedMinutes} minutes of reading in total — and you can go at your own pace.`,
+          },
+          {
+            question: `Do I need to be technical to take ${mod.title}?`,
+            answer:
+              "No. Every module is written in plain language for non-technical readers — no coding, no jargon, no signup.",
+          },
+        ];
   const moduleIndex = parseInt(params.moduleId.replace("module-", "")) - 1;
   // Generated cover images at /images/generated/module-{N}-cover.png
   const emoji = MODULE_EMOJIS[moduleIndex] ?? "📚";
@@ -395,6 +435,7 @@ export default function ModulePage({ params }: Props) {
           )}
         </div>
       </section>
+      <HubFAQ items={faqItems} />
     </main>
   );
 }
