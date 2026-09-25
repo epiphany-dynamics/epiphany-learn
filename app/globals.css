@@ -2,6 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Editorial article sections use the Learn palette without changing lesson pages. */
+.article-takeaways, .article-contents, .article-stat-section, .article-methodology {
+  margin: 2rem 0;
+}
+.article-takeaways h2, .article-contents h2, .article-stat-section h2, .article-methodology h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+.article-takeaway-grid, .article-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+}
+.article-takeaway, .article-stat, .article-contents {
+  border: 1px solid var(--brand-border);
+  border-radius: 1rem;
+  background: var(--brand-dim);
+  padding: 1rem;
+}
+.article-takeaway > span { color: var(--accent-cyan); font-size: .8rem; font-weight: 700; }
+.article-takeaway p, .article-stat p { margin-top: .5rem; line-height: 1.55; }
+.article-contents ol { columns: 2; column-gap: 1.5rem; list-style: decimal; padding-left: 1.25rem; }
+.article-contents li { break-inside: avoid; margin-bottom: .65rem; }
+.article-contents a, .article-stat a { color: var(--accent-cyan); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.article-contents a:hover, .article-stat a:hover { color: var(--text-primary); }
+.article-stat strong { display: block; color: var(--accent-cyan); font-size: 1.75rem; line-height: 1.15; overflow-wrap: anywhere; }
+.article-stat a, .article-stat span { font-size: .8rem; }
+.article-methodology { border-top: 1px solid var(--brand-border); padding-top: 1.5rem; color: var(--text-secondary); line-height: 1.65; }
+.article-methodology p + p { margin-top: .75rem; }
+.article-prose h2[id] { scroll-margin-top: 2rem; }
+.article-prose ul, .article-prose ol { padding-left: 1.75rem; }
+.article-prose li { padding-left: .25rem; }
+.article-prose blockquote { margin-inline: 0; }
+.article-table-wrap { overflow-x: auto; margin: 1.75rem 0; border: 1px solid var(--brand-border); border-radius: .75rem; }
+.article-table-wrap table { border-collapse: collapse; min-width: 32rem; width: 100%; }
+.article-table-wrap th, .article-table-wrap td { padding: .75rem 1rem; border-bottom: 1px solid var(--brand-border); text-align: left; vertical-align: top; }
+.article-table-wrap th { color: var(--accent-cyan); background: var(--brand-dim); }
+.article-table-wrap tr:last-child td { border-bottom: 0; }
+@media (max-width: 640px) {
+  .article-takeaway-grid, .article-stat-grid { grid-template-columns: 1fr; }
+  .article-contents ol { columns: 1; }
+  .article-prose blockquote { padding: 1.25rem 1rem; }
+}
+
 /* ============================================================
    DESIGN TOKENS — CSS CUSTOM PROPERTIES
    epiphany.help | Kahoot-inspired dark-first design

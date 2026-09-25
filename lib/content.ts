@@ -101,6 +101,45 @@ export function getAllLessonSlugs(): Array<{ moduleId: string; slug: string }> {
 
 // --- Articles ---
 
+export interface ArticleEditorial {
+  kind: 'guide' | 'comparison' | 'research'
+  takeaways: [string, string, string]
+  stats?: Array<{
+    value: string
+    label: string
+    sourceName: string
+    sourceUrl: string
+    sourceDate: string
+  }>
+  methodology?: string
+  verifiedAt?: string
+}
+
+export function parseArticleEditorial(value: unknown): ArticleEditorial | undefined {
+  if (!value || typeof value !== 'object') return undefined
+  const data = value as Record<string, unknown>
+  if (!['guide', 'comparison', 'research'].includes(String(data.kind))) return undefined
+  if (!Array.isArray(data.takeaways) || data.takeaways.length !== 3 ||
+    !data.takeaways.every((item) => typeof item === 'string' && item.trim())) return undefined
+
+  const stats = Array.isArray(data.stats) ? data.stats.filter((item): item is NonNullable<ArticleEditorial['stats']>[number] => {
+    if (!item || typeof item !== 'object') return false
+    const stat = item as Record<string, unknown>
+    if (!['value', 'label', 'sourceName', 'sourceUrl', 'sourceDate'].every((key) =>
+      typeof stat[key] === 'string' && (stat[key] as string).trim())) return false
+    try { return ['https:', 'http:'].includes(new URL(stat.sourceUrl as string).protocol) }
+    catch { return false }
+  }) : undefined
+
+  return {
+    kind: data.kind as ArticleEditorial['kind'],
+    takeaways: data.takeaways as ArticleEditorial['takeaways'],
+    ...(stats?.length ? { stats } : {}),
+    ...(typeof data.methodology === 'string' && data.methodology.trim() ? { methodology: data.methodology } : {}),
+    ...(typeof data.verifiedAt === 'string' && data.verifiedAt.trim() ? { verifiedAt: data.verifiedAt } : {}),
+  }
+}
+
 export interface ArticleMeta {
   slug: string
   title: string
@@ -116,11 +155,13 @@ export interface ArticleMeta {
   imageHeight?: number | null
   draft: boolean
   noindex?: boolean
+  editorial?: ArticleEditorial
   networkLinks?: { title: string; url: string; site: NetworkSiteId }[]
 }
 
 export interface Article extends ArticleMeta {
   body: string
+  editorial?: ArticleEditorial
 }
 
 export type NetworkSiteId = 'ed' | 'fss' | 'calc' | 'help' | 'hype'
@@ -175,6 +216,6 @@ export function getArticle(slug: string): Article | null {
   if (!metadata) return null
   const filePath = path.join(CONTENT_DIR, 'articles', `${slug}.mdx`)
   if (!fs.existsSync(filePath)) return null
-  const { content } = matter(fs.readFileSync(filePath, 'utf-8'))
-  return { ...metadata, body: content }
+  const { data, content } = matter(fs.readFileSync(filePath, 'utf-8'))
+  return { ...metadata, body: content, editorial: parseArticleEditorial(data.editorial ?? metadata.editorial) }
 }
