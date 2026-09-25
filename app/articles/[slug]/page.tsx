@@ -5,6 +5,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import NetworkLinks from "@/components/NetworkLinks";
 import { buildFAQSchema } from "@/lib/faq-schema";
+import { articleHeadingId, getArticleHeadings } from "@/lib/article-headings";
+import { Children, isValidElement } from "react";
+import type { ReactNode } from "react";
+
+function headingText(children: ReactNode): string {
+  return Children.toArray(children).map((child) => {
+    if (typeof child === "string" || typeof child === "number") return String(child);
+    return isValidElement<{ children?: ReactNode }>(child) ? headingText(child.props.children) : "";
+  }).join("");
+}
 
 interface Props {
   params: { slug: string };
@@ -56,7 +66,7 @@ export default async function ArticlePage({ params }: Props) {
   const article = getArticle(params.slug);
   if (!article) notFound();
 
-  let Content: React.ComponentType | null = null;
+  let Content: React.ComponentType<{ components?: Record<string, React.ElementType> }> | null = null;
   try {
     const mod = await import(
       /* webpackInclude: /\.mdx$/ */
@@ -86,6 +96,21 @@ export default async function ArticlePage({ params }: Props) {
     : null;
 
   const pageURL = `https://epiphany.help/articles/${article.slug}`;
+  const headings = article.editorial ? getArticleHeadings(article.body) : [];
+  const headingCounts = new Map<string, number>();
+  const editorialComponents = {
+    h2: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+      const base = articleHeadingId(headingText(children));
+      const count = headingCounts.get(base) ?? 0;
+      headingCounts.set(base, count + 1);
+      return <h2 id={count ? `${base}-${count + 1}` : base} {...props}>{children}</h2>;
+    },
+    table: ({ children }: React.HTMLAttributes<HTMLTableElement>) => (
+      <div className="article-table-wrap" role="region" aria-label="Article data table" tabIndex={0}>
+        <table>{children}</table>
+      </div>
+    ),
+  };
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -178,9 +203,56 @@ export default async function ArticlePage({ params }: Props) {
             )}
           </header>
 
-          <div className="prose-lesson max-w-none">
-            <Content />
+          {article.editorial && (
+            <>
+              <section className="article-takeaways" aria-labelledby="article-takeaways-title">
+                <h2 id="article-takeaways-title">Key takeaways</h2>
+                <div className="article-takeaway-grid">
+                  {article.editorial.takeaways.map((takeaway, index) => (
+                    <div className="article-takeaway" key={index}>
+                      <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                      <p>{takeaway}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+              {headings.length > 0 && (
+                <nav className="article-contents" aria-label="On this page">
+                  <h2>In this article</h2>
+                  <ol>{headings.map((heading) => (
+                    <li key={heading.id}><a href={`#${heading.id}`}>{heading.title}</a></li>
+                  ))}</ol>
+                </nav>
+              )}
+              {article.editorial.stats && (
+                <section className="article-stat-section" aria-labelledby="article-stat-title">
+                  <h2 id="article-stat-title">Figures at a glance</h2>
+                  <div className="article-stat-grid">
+                    {article.editorial.stats.map((stat, index) => (
+                      <div className="article-stat" key={`${stat.sourceUrl}-${index}`}>
+                        <strong>{stat.value}</strong>
+                        <p>{stat.label}</p>
+                        <a href={stat.sourceUrl} target="_blank" rel="noopener noreferrer">Source: {stat.sourceName}</a>
+                        <span> ({stat.sourceDate})</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </>
+          )}
+
+          <div className="prose-lesson article-prose max-w-none">
+            {article.editorial ? <Content components={editorialComponents} /> : <Content />}
           </div>
+
+          {article.editorial?.methodology && (
+            <section className="article-methodology" aria-labelledby="article-methodology-title">
+              <h2 id="article-methodology-title">Sources and methodology</h2>
+              <p>{article.editorial.methodology}</p>
+              {article.editorial.verifiedAt && <p>Sources checked: {article.editorial.verifiedAt}</p>}
+            </section>
+          )}
 
           <NetworkLinks links={article.networkLinks} />
         </article>
