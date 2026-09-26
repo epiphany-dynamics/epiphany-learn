@@ -96,7 +96,7 @@ export default async function ArticlePage({ params }: Props) {
     : null;
 
   const pageURL = `https://epiphany.help/articles/${article.slug}`;
-  const headings = article.editorial ? getArticleHeadings(article.body) : [];
+  const headings = getArticleHeadings(article.body);
   const headingCounts = new Map<string, number>();
   const editorialComponents = {
     h2: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
@@ -175,23 +175,24 @@ export default async function ArticlePage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: jsonLd(faqStructuredData) }}
         />
       )}
-      <main className="min-h-screen px-6 py-16 max-w-[65ch] mx-auto">
-        <nav className="text-sm text-white/40 mb-8">
+      <main className="article-page min-h-screen">
+        <nav className="article-back-link text-sm mb-8">
           <Link href="/articles" className="hover:text-white/70 transition-colors">
             &larr; All Articles
           </Link>
         </nav>
 
         <article>
-          <header className="mb-8 pb-8 border-b border-white/10">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
+          <header className="article-page-header">
+            <h1>{article.title}</h1>
+            <p className="article-page-deck">{article.description}</p>
             <div className="flex flex-wrap items-center gap-3 text-sm text-white/40">
               <time dateTime={article.pubDate}>{formattedDate}</time>
               <span>by Patrick Gibbs</span>
               {formattedUpdated && <span>Updated {formattedUpdated}</span>}
             </div>
             {article.image && (
-              <figure className="mt-6 overflow-hidden rounded-xl border border-white/10">
+              <figure className="article-page-hero">
                 <img
                   src={article.image}
                   alt={article.imageAlt ?? article.title}
@@ -203,19 +204,21 @@ export default async function ArticlePage({ params }: Props) {
             )}
           </header>
 
-          {article.editorial && (
-            <>
-              <section className="article-takeaways" aria-labelledby="article-takeaways-title">
-                <h2 id="article-takeaways-title">Key takeaways</h2>
-                <div className="article-takeaway-grid">
-                  {article.editorial.takeaways.map((takeaway, index) => (
-                    <div className="article-takeaway" key={index}>
-                      <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                      <p>{takeaway}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
+          {(article.editorial || headings.length > 0) && (
+            <div className="article-page-guide">
+              {article.editorial && (
+                <section className="article-takeaways" aria-labelledby="article-takeaways-title">
+                  <h2 id="article-takeaways-title">Key takeaways</h2>
+                  <div className="article-takeaway-grid">
+                    {article.editorial.takeaways.map((takeaway, index) => (
+                      <div className="article-takeaway" key={index}>
+                        <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                        <p>{takeaway}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
               {headings.length > 0 && (
                 <nav className="article-contents" aria-label="On this page">
                   <h2>In this article</h2>
@@ -224,27 +227,28 @@ export default async function ArticlePage({ params }: Props) {
                   ))}</ol>
                 </nav>
               )}
-              {article.editorial.stats && (
-                <section className="article-stat-section" aria-labelledby="article-stat-title">
-                  <h2 id="article-stat-title">Figures at a glance</h2>
-                  <div className="article-stat-grid">
-                    {article.editorial.stats.map((stat, index) => (
-                      <div className="article-stat" key={`${stat.sourceUrl}-${index}`}>
-                        <strong>{stat.value}</strong>
-                        <p>{stat.label}</p>
-                        <a href={stat.sourceUrl} target="_blank" rel="noopener noreferrer">Source: {stat.sourceName}</a>
-                        <span> ({stat.sourceDate})</span>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              )}
-            </>
+            </div>
           )}
 
           <div className="prose-lesson article-prose max-w-none">
-            {article.editorial ? <Content components={editorialComponents} /> : <Content />}
+            <Content components={editorialComponents} />
           </div>
+
+          {article.editorial?.stats && (
+            <section className="article-stat-section" aria-labelledby="article-stat-title">
+              <h2 id="article-stat-title">Figures at a glance</h2>
+              <div className="article-stat-grid">
+                {article.editorial.stats.map((stat, index) => (
+                  <div className="article-stat" key={`${stat.sourceUrl}-${index}`}>
+                    <strong>{stat.value}</strong>
+                    <p>{stat.label}</p>
+                    <a href={stat.sourceUrl} target="_blank" rel="noopener noreferrer">Source: {stat.sourceName}</a>
+                    <span> ({stat.sourceDate})</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {article.editorial?.methodology && (
             <section className="article-methodology" aria-labelledby="article-methodology-title">
