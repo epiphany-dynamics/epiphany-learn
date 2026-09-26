@@ -4,4 +4,4 @@ The workspace rules in `../AGENTS.md` apply. This repository serves the Epiphany
 
 ## Codex Resume
 
-- 2026-09-25: In-session Gravity editorial article rendering is ready for independent review in `codex/2026-09-25-gravity-editorial-learn`. New articles use optional `editorial` MDX frontmatter. The build and a temporary fixture render passed; the fixture was removed. Existing articles remain supported. No Linear issue was requested for this work.
+- 2026-09-25: The article template and scoped CSS are widened in `codex/2026-09-25-wide-editorial-help` from `origin/main` at 32e257e. The 1160px canvas applies to all articles while paragraphs retain a 72ch measure; lessons are unaffected. The Next build passed with the site's local environment. Existing Gravity drafts were untouched. Independent exact-SHA review is next. This work stays in-session and out of Linear.

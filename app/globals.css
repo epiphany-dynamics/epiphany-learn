@@ -1650,3 +1650,158 @@ body.lesson-active {
   .quiz-emoji-float { display: none; }
   .quiz-particle-burst { display: none; }
 }
+
+/* Article pages use a broad editorial canvas; the 72ch measure belongs to text. */
+.article-page {
+  width: min(100% - 2rem, 1160px);
+  margin-inline: auto;
+  padding-block: clamp(5rem, 8vw, 7rem) 4rem;
+}
+
+.article-back-link { color: rgba(240, 239, 235, .72); }
+.article-back-link a:focus-visible,
+.article-page-guide a:focus-visible,
+.article-stat-section a:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 4px;
+}
+
+.article-page-header {
+  padding-bottom: clamp(1.75rem, 4vw, 3rem);
+  border-bottom: 1px solid rgba(240, 239, 235, .2);
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.article-page-header h1 {
+  max-width: 22ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.article-page-deck {
+  max-width: 72ch;
+  margin-bottom: 1.25rem;
+  color: var(--text-secondary);
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.article-page-hero {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.article-page-hero img {
+  display: block;
+  width: 100%;
+  max-height: 620px;
+  height: auto;
+  object-fit: cover;
+}
+
+.article-page-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(240, 239, 235, .2);
+  margin-bottom: clamp(2.25rem, 5vw, 4rem);
+}
+
+.article-page-guide > * { min-width: 0; margin: 0; }
+.article-page-guide:not(:has(.article-takeaways)) { display: block; }
+.article-page-guide:not(:has(.article-takeaways)) .article-contents ol {
+  columns: 2;
+  column-gap: 2rem;
+}
+.article-page-guide h2 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); }
+.article-page-guide .article-takeaway-grid { display: block; }
+.article-page-guide .article-takeaway {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+  padding: .85rem 0;
+  border: 0;
+  border-top: 1px solid rgba(240, 239, 235, .16);
+  border-radius: 0;
+  background: transparent;
+}
+.article-page-guide .article-takeaway > span { color: var(--accent-cyan); }
+.article-page-guide .article-takeaway p { margin: 0; }
+.article-page-guide .article-contents {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.article-page-guide .article-contents ol {
+  columns: 1;
+  padding-left: 1.25rem;
+}
+
+.article-page .article-prose {
+  max-width: 72ch;
+  margin-inline: auto;
+}
+
+.article-page .article-prose > p,
+.article-page .article-prose > ul,
+.article-page .article-prose > ol {
+  font-size: clamp(1.05rem, 1.2vw, 1.16rem);
+  line-height: 1.8;
+}
+
+.article-page .article-prose > p:first-child {
+  color: var(--text-primary);
+  font-size: clamp(1.18rem, 1.5vw, 1.32rem);
+  line-height: 1.65;
+}
+
+.article-page .article-prose h2 {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(240, 239, 235, .16);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.article-page .article-prose h3 {
+  margin-top: 2rem;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  line-height: 1.25;
+}
+
+.article-page .article-prose > :is(.article-table-wrap, figure, img, p:has(> img)) {
+  position: relative;
+  left: 50%;
+  width: min(1100px, calc(100vw - 2rem));
+  max-width: none;
+  transform: translateX(-50%);
+}
+
+.article-page .article-prose img { max-width: 100%; height: auto; }
+.article-page .article-prose blockquote { border-left-width: 1px; box-shadow: none; }
+.article-page .article-prose blockquote::before { content: none; }
+.article-page .article-prose > * { animation: none; }
+
+.article-page .article-stat-section,
+.article-page .article-methodology { margin-top: clamp(3rem, 7vw, 5rem); }
+
+@media (max-width: 800px) {
+  .article-page-guide { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  .article-page-header h1 { max-width: none; }
+  .article-page .article-prose > :is(.article-table-wrap, figure, img, p:has(> img)) {
+    width: calc(100vw - 2rem);
+  }
+  .article-page-guide:not(:has(.article-takeaways)) .article-contents ol { columns: 1; }
+}
