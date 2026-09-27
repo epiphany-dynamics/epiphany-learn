@@ -1569,5 +1569,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "does-chatgpt-share-your-questions",
+    "title": "Does ChatGPT Share Your Questions? Who Can Read Them",
+    "description": "Does ChatGPT share your questions? A calm guide to who can read what you type, why your work plan matters, and a safe ten-minute exercise to test it.",
+    "seoTitle": "Does ChatGPT Share Your Questions? Who Can Read Them",
+    "focusKeyword": "does chatgpt share your questions",
+    "tags": [
+      "ChatGPT privacy",
+      "AI for beginners",
+      "data privacy",
+      "AI at work",
+      "safe AI use"
+    ],
+    "pubDate": "2026-09-25",
+    "image": "/images/articles/does-chatgpt-share-your-questions.webp",
+    "imageAlt": "Does ChatGPT Share Your Questions? Who Can Read Them: does chatgpt share your questions",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
