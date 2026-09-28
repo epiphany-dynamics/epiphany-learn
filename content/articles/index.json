@@ -1591,5 +1591,35 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "editorial": {
+      "kind": "guide",
+      "takeaways": [
+        "Sort ChatGPT inputs into three buckets: public or generic content is fine anywhere, client and financial details need a business tier with training off, and highly sensitive data should never be typed in.",
+        "A personal ChatGPT Plus subscription is not the same as a company business account with admin controls and training disabled, so confirm which one you actually have.",
+        "Swap real names and numbers for placeholders like 'Client A' and '$X' before typing, then add real details back afterward, to make any work task safer on any plan."
+      ]
+    },
+    "slug": "is-chatgpt-safe-to-use-at-work",
+    "title": "Is ChatGPT Safe to Use at Work? A Plain Rule to Follow",
+    "description": "Is ChatGPT safe to use at work? Learn the simple split between what's fine on any plan and what needs a business tier or should stay out entirely.",
+    "seoTitle": "Is ChatGPT Safe to Use at Work? A Plain Rule",
+    "focusKeyword": "is chatgpt safe to use at work",
+    "tags": [
+      "chatgpt at work",
+      "ai safety",
+      "workplace ai",
+      "data privacy",
+      "ai for beginners"
+    ],
+    "pubDate": "2026-09-27",
+    "image": "/images/articles/is-chatgpt-safe-to-use-at-work.webp",
+    "imageAlt": "Is ChatGPT Safe to Use at Work? A Plain Rule to Follow: is chatgpt safe to use at work",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
