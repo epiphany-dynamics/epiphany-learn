@@ -96,6 +96,7 @@ export default async function ArticlePage({ params }: Props) {
     : null;
 
   const pageURL = `https://epiphany.help/articles/${article.slug}`;
+  const useReadingLayout = article.pubDate >= "2026-08-01";
   const headings = getArticleHeadings(article.body);
   const headingCounts = new Map<string, number>();
   const editorialComponents = {
@@ -175,7 +176,7 @@ export default async function ArticlePage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: jsonLd(faqStructuredData) }}
         />
       )}
-      <main className="article-page min-h-screen">
+      <main className={`article-page min-h-screen${useReadingLayout ? " article-page--gravity" : ""}`}>
         <nav className="article-back-link text-sm mb-8">
           <Link href="/articles" className="hover:text-white/70 transition-colors">
             &larr; All Articles
@@ -204,7 +205,39 @@ export default async function ArticlePage({ params }: Props) {
             )}
           </header>
 
-          {(article.editorial || headings.length > 0) && (
+          {useReadingLayout ? (
+            <>
+              {article.editorial && (
+                <section className="article-takeaways article-featured-takeaways" aria-labelledby="article-takeaways-title">
+                  <h2 id="article-takeaways-title">Key takeaways</h2>
+                  <div className="article-takeaway-grid">
+                    {article.editorial.takeaways.map((takeaway, index) => (
+                      <div className="article-takeaway" key={index}>
+                        <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                        <p>{takeaway}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+              <div className={`article-reading-layout${headings.length ? "" : " article-reading-layout--plain"}`}>
+                {headings.length > 0 && (
+                  <aside className="article-reading-aside">
+                    <nav className="article-contents article-contents--side" aria-label="On this page">
+                      <p className="article-reading-eyebrow">Reading guide</p>
+                      <h2>In this article</h2>
+                      <ol>{headings.map((heading) => (
+                        <li key={heading.id}><a href={`#${heading.id}`}>{heading.title}</a></li>
+                      ))}</ol>
+                    </nav>
+                  </aside>
+                )}
+                <div className="prose-lesson article-prose max-w-none">
+                  <Content components={editorialComponents} />
+                </div>
+              </div>
+            </>
+          ) : (article.editorial || headings.length > 0) && (
             <div className="article-page-guide">
               {article.editorial && (
                 <section className="article-takeaways" aria-labelledby="article-takeaways-title">
@@ -230,9 +263,11 @@ export default async function ArticlePage({ params }: Props) {
             </div>
           )}
 
-          <div className="prose-lesson article-prose max-w-none">
-            <Content components={editorialComponents} />
-          </div>
+          {!useReadingLayout && (
+            <div className="prose-lesson article-prose max-w-none">
+              <Content components={editorialComponents} />
+            </div>
+          )}
 
           {article.editorial?.stats && (
             <section className="article-stat-section" aria-labelledby="article-stat-title">
