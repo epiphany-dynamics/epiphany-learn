@@ -17,3 +17,7 @@ The article page now uses a 1160px editorial canvas for the title, hero image, t
 ### Archived Codex Resume
 
 - 2026-09-25: In-session Gravity editorial article rendering is ready for independent review in `codex/2026-09-25-gravity-editorial-learn`. New articles use optional `editorial` MDX frontmatter. The build and a temporary fixture render passed; the fixture was removed. Existing articles remain supported. No Linear issue was requested for this work.
+
+## 2026-09-29 — Article hero image crop
+
+The shared article hero no longer caps images at 620px or crops them with `object-fit: cover`. Its image keeps the source aspect ratio; the figure is centered and limited to 1280px on the wider August-onward article canvas, and older articles remain within their 1160px page. All 67 indexed articles are published and use 1536 × 1024 hero images; two intentionally carry `noindex` and stay out of the sitemap. The production build passed, and local browser previews of a recent article and a July article showed full images at 1920px and 390px viewport widths with no page overflow. Build-generated `public/llms.txt` and `public/sitemap.xml` changes were restored before commit. Generated drafts, article prose, metadata, lesson pages, and publication state were untouched. The change is on `codex/2026-09-29-article-hero`; independent exact-SHA review and release are next. No Linear issue was requested.
