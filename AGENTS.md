@@ -4,7 +4,7 @@ The workspace rules in `../AGENTS.md` apply. This repository serves the Epiphany
 
 ## Codex Resume
 
-- 2026-09-29: Articles dated August 1, 2026 onward use a wider article body and a right reading guide bounded to the body. The feature branch is `codex/2026-09-29-learn-reading-layout` in `.worktrees/2026-09-29-learn-reading-layout`. Older articles retain their current presentation. Draft flags and lesson pages are unchanged. Independent exact-SHA review and release are next.
+- 2026-09-29: Articles dated August 1, 2026 onward use a wider article body and a right reading guide bounded to the body. The feature branch is `codex/2026-09-29-learn-reading-layout` in `.worktrees/2026-09-29-learn-reading-layout`. Body horizontal overflow uses `clip` so sticky positioning follows the page scroll; lesson-active still locks scrolling. Older articles retain their current presentation. Draft flags and lesson pages are unchanged. Independent exact-SHA review and release are next.
 
 ### Archived Codex Resume
 

@@ -2,7 +2,7 @@
 
 ## 2026-09-29 — Gravity article reading layout
 
-Articles dated August 1, 2026 onward use a 1540px editorial canvas with a wide prose column and a 262px right reading guide. The guide is sticky only within the article body; it stacks above the article below 1200px and cannot overlap later article sections or network links. Existing July articles retain their current layout. The implementation is on `codex/2026-09-29-learn-reading-layout`; generated drafts and their draft flags remain untouched. The Next build completed and a recent rendered article contains the guide while a July article retains the old structure. Independent exact-SHA review and release are next.
+Articles dated August 1, 2026 onward use a 1540px editorial canvas with a wide prose column and a 262px right reading guide. The guide is sticky only within the article body; it stacks above the article below 1200px and cannot overlap later article sections or network links. Body horizontal overflow uses `clip` so it does not create a non-scrolling sticky ancestor; lesson-active still locks scrolling. Existing July articles retain their current layout. The implementation is on `codex/2026-09-29-learn-reading-layout`; generated drafts and their draft flags remain untouched. The Next build completed and a recent rendered article contains the guide while a July article retains the old structure. Independent exact-SHA review and release are next.
 
 ## 2026-09-25 — Gravity editorial articles
 
