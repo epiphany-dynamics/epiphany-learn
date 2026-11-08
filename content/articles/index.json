@@ -1621,5 +1621,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "google-lens-identify-plant-photo",
+    "title": "Google Lens Identify Plant Photo: Treat the Result as a Lead",
+    "description": "Open a garden photo in Google Lens from Google Photos on Android, read the species details, and learn to treat the name as a lead to check, not a safety answer.",
+    "seoTitle": "Google Lens Identify Plant Photo: A Beginner Guide",
+    "focusKeyword": "google lens identify plant photo",
+    "tags": [
+      "Google Lens",
+      "plant identification",
+      "AI for beginners",
+      "verifying AI answers",
+      "Google Photos"
+    ],
+    "pubDate": "2026-11-08",
+    "image": "/images/articles/google-lens-identify-plant-photo.webp",
+    "imageAlt": "Google Lens Identify Plant Photo: Treat the Result as a Lead: google lens identify plant photo",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
