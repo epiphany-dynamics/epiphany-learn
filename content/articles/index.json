@@ -1666,5 +1666,28 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "how-to-write-ai-prompts-for-image-to-video",
+    "title": "How to Write AI Prompts for Image to Video: Describe Motion",
+    "description": "Learn how to write AI prompts for image to video using Runway's guidance: describe motion, start simple, refine one change at a time, and practice safely.",
+    "seoTitle": "How to Write AI Prompts for Image to Video",
+    "focusKeyword": "how to write ai prompts for image to video",
+    "tags": [
+      "image to video",
+      "AI prompts",
+      "Runway",
+      "prompt writing",
+      "beginner AI",
+      "AI video"
+    ],
+    "pubDate": "2026-11-10",
+    "image": "/images/articles/how-to-write-ai-prompts-for-image-to-video.webp",
+    "imageAlt": "How to Write AI Prompts for Image to Video: Describe Motion: how to write ai prompts for image to video",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
