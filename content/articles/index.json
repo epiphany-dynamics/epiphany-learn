@@ -1689,5 +1689,27 @@
     "draft": false,
     "updated": null,
     "networkLinks": []
+  },
+  {
+    "slug": "ai-prompt-examples-for-photo-editing",
+    "title": "AI Prompt Examples for Photo Editing: Say What Stays the Same",
+    "description": "Beginner-friendly AI prompt examples for photo editing. Name the photo, one change, and what to preserve, then check the result with a side-by-side comparison.",
+    "seoTitle": "AI Prompt Examples for Photo Editing: Keep What Matters",
+    "focusKeyword": "ai prompt examples for photo editing",
+    "tags": [
+      "AI photo editing",
+      "prompt examples",
+      "beginner prompts",
+      "image editing",
+      "AI safety"
+    ],
+    "pubDate": "2026-11-11",
+    "image": "/images/articles/ai-prompt-examples-for-photo-editing.webp",
+    "imageAlt": "AI Prompt Examples for Photo Editing: Say What Stays the Same: ai prompt examples for photo editing",
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "draft": false,
+    "updated": null,
+    "networkLinks": []
   }
 ]
